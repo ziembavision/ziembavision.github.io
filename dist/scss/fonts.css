@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Cooper Black';
+  src: url("../../assets/fonts/Cooper_Black.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Cooper Black Italic';
+  src: url("../../assets/fonts/Cooper_Black_Italic.ttf") format("truetype"); }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvbnRzLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDRCQUE0QjtFQUM1QixtRUFBbUUsRUFBRTs7QUFFdkU7RUFDRSxtQ0FBbUM7RUFDbkMsMEVBQTBFLEVBQUUiLCJmaWxlIjoic2Nzcy9mb250cy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6ICdDb29wZXIgQmxhY2snO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9Db29wZXJfQmxhY2sudHRmXCIpIGZvcm1hdChcInRydWV0eXBlXCIpOyB9XG5cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogJ0Nvb3BlciBCbGFjayBJdGFsaWMnO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9Db29wZXJfQmxhY2tfSXRhbGljLnR0ZlwiKSBmb3JtYXQoXCJ0cnVldHlwZVwiKTsgfVxuIl19 */

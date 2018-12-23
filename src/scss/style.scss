@@ -1,0 +1,79 @@
+@import 'normalize';
+@import 'fonts';
+
+$breakpoint-xs: 375px;
+$breakpoint-sm: 545px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+
+@keyframes fadeIn {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	1% {
+		display: block;
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.grid-outer {
+	display: grid;
+	height: 100%;
+	width: 100%;
+	grid-template-columns: repeat(30, [col] 1fr);
+    grid-template-rows: repeat(30, [col] 1fr);
+}
+
+.item {
+	cursor: pointer;
+}
+
+#item-1 {
+	grid-column: 3;
+	grid-row: 6;
+	height: 30px;
+	width: 30px;
+	background: red;
+}
+
+#item-2 {
+	grid-column: 6;
+  grid-row: 25;
+	height: 30px;
+	width: 30px;
+	background: yellow;
+}
+
+#item-3 {
+	grid-column: 20;
+	grid-row: 10;
+	height: 30px;
+	width: 30px;
+	background: blue;
+}
+
+.img-main {
+	size: cover;
+	width: 100%;
+	position: fixed;
+	filter: hue-rotate(220deg) brightness(180%) contrast(100%);
+}
+
+
