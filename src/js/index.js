@@ -61,7 +61,7 @@ const setUpAudio = () => {
   createSvgD3();
 };
 
-const i0 = interpolateHsvLong(hsv(120, 1, 0.65), hsv(60, 1, 0.90));
+const i0 = interpolateHsvLong(hsv(240, 1, 0.65), hsv(60, 0, 0.90));
 const i1 = interpolateHsvLong(hsv(60, 1, 0.90), hsv(0, 0, 0.95));
     
 const interpolateTerrain = (t) => { 
@@ -85,7 +85,12 @@ const createSvgD3 = () => {
         d3.geoIdentity()
           .scale(width / volcano.width)
       ))
-      .attr('fill', (d) => color(d.value));
+      .attr('fill', (d) => {
+        console.log('color value: ', d.value)
+        return color(d.value)
+      });
+      // .attr('fill', 'rgb(241, 219, 217)')
+      // .attr('stroke', 'black');
 
   // renderData();
 };
@@ -93,7 +98,8 @@ const createSvgD3 = () => {
 let toggle = true;
 let count = 0;
 const renderData = () => {
-  console.log('rendering data: ', playing)
+  console.log('rendering data: ', playing);
+  let storage = [];
 
   // Map frequency data to frequencyData typed array
   analyser.getByteFrequencyData(frequencyData);
@@ -108,9 +114,11 @@ const renderData = () => {
     currentData = prevData.map((d, i) => {
       const sliced = frequencyData.slice(0, 5308);
       let diff1 = Math.abs(d - sliced[1])/1000 + d;
-      let diff2 = Math.abs(sliced[i] - d)/1000 + volcano.values[i];
-      let diffF = (count % 2) ? diff1 : (diff1 + diff2)/2;
-      return diff1;
+      // let diff2 = Math.abs(sliced[i] - d)/1000 + volcano.values[i];
+      let diff2 = diff1 - 0.1;
+      let diffF = (count % 100) ? diff1 : diff2;
+      storage.push(diff2);
+      return diffF;
     })
   // }
   // currentData = frequencyData;
@@ -135,7 +143,7 @@ const renderData = () => {
         d3.geoIdentity()
           .scale(width / volcano.width)
       ))
-      .attr('fill', (d) => color(d.value));
+      //.attr('fill', (d) => color(d.value));
   }
 
   if (playing) requestAnimationFrame(renderData);

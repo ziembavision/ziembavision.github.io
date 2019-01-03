@@ -11,6 +11,7 @@ $breakpoint-xl: 1200px;
 	0% {
 		display: none;
 		opacity: 0;
+		z-index: -20;
 	}
 	1% {
 		display: block;
@@ -18,14 +19,17 @@ $breakpoint-xl: 1200px;
 	}
 	100% {
 		opacity: 1;
+		z-index: 10;
 	}
 }
 
 html {
+	box-sizing: border-box;
 	height: 100%;
 }
 
 body {
+	background: rgb(241, 219, 217);
 	height: 100%;
 }
 
@@ -33,16 +37,73 @@ body {
 	display: none;
 }
 
+.main-outer {
+	align-items: center;
+	display: flex;
+	height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.title {
+	position: fixed;
+  transform: translateY(-270px);
+}
+
 .grid-outer {
 	display: grid;
 	height: 100%;
-	width: 100%;
+	position: absolute;
+	width: 1060px;
 	grid-template-columns: repeat(30, [col] 1fr);
-    grid-template-rows: repeat(30, [col] 1fr);
+  grid-template-rows: repeat(30, [col] 1fr);
 }
 
 .item {
 	cursor: pointer;
+}
+
+.map {
+	/*border: 5px groove rosybrown;*/
+	position: absolute;
+	z-index: -5;
+
+	&-outer {
+		display: flex;
+		flex-direction: column;
+/*		justify-content: center;
+		align-items: center;*/
+		position: absolute;
+		width: 100;
+		z-index: -5;
+	}
+}
+
+#compass {
+	bottom: 20px;
+	cursor: pointer;
+	left: 20px;
+	position: fixed;
+  width: 100px;
+}
+
+#view {
+	background: white;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+	transition: fadeIn;
+	width: 100%;
+	z-index: -20;
+}
+
+#home {
+	background: white;
+	height: 50px;
+	position: absolute;
+	left: 3000px;
+	top: 5000px;
+	width: 100px;
 }
 
 #item-1 {
