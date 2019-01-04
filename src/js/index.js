@@ -160,7 +160,14 @@ const addButtonListeners = () => {
   compass.addEventListener('click', () => {
     console.log('visible: ', menuIsVisible)
     menuIsVisible ? hideMenu() : showMenu();
-  })
+  });
+
+  const aboutButton = document.getElementById('anchor-about');
+  const aboutTarget = document.getElementById('about');
+
+  aboutButton.addEventListener('click', () => {
+    aboutTarget.scrollIntoView({behavior: "smooth"});
+  });
 }
 
 const init = () => {

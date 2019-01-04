@@ -48,8 +48,16 @@ body {
 
 #menu {
 	background: white;
+	left: 20px;
+	position: fixed;
   width: 200px;
   height: 80%;
+}
+
+#about {
+  position: absolute;
+  top: 800px;
+  left: 2000px;
 }
 
 .main-outer {
