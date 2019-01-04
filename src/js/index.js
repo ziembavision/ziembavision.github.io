@@ -9,20 +9,13 @@ let svg = d3.select("svg"),
     height = +svg.attr("height"),
     color,
     analyser,
-    bufferLength = 8192,
+    bufferLength = 16384,
     dataLength = 5307,
     frequencyData,
     timeData;
 
 let currentData = volcano.values;
 let playing = false;
-
-const interweave = (a, b) => {
-  return Array.apply(null, Array(dataLength)).reduce((result, value, index) => {
-    result.push(a[index], b[index]);
-    return result;
-  }, []).concat((a.length > dataLength ? a : b).slice(dataLength));
-};
 
 const setUpAudio = () => {
   console.log('in setUpAudio')
@@ -89,8 +82,6 @@ const createSvgD3 = () => {
         console.log('color value: ', d.value)
         return color(d.value)
       });
-      // .attr('fill', 'rgb(241, 219, 217)')
-      // .attr('stroke', 'black');
 
   // renderData();
 };
@@ -99,25 +90,25 @@ let toggle = true;
 let count = 0;
 const renderData = () => {
   console.log('rendering data: ', playing);
-  let storage = [];
 
   // Map frequency data to frequencyData typed array
   analyser.getByteFrequencyData(frequencyData);
-  analyser.getByteTimeDomainData(timeData);
+  // analyser.getByteTimeDomainData(timeData);
 
   let prevData = currentData;
-  // if (!(count % 200)) {
-    // currentData = interweave(prevData, frequencyData);
-  // currentData = prevData.map(d => toggle ? d + 0.5 : d - 0.12345);
-  // console.log('count: ', count, count % 2)
+  // if (count % 25 === 0) {
+  // // currentData = prevData.map(d => toggle ? d + 0.5 : d - 0.12345);
+  // // console.log('count: ', count, count % 2)
+  //   currentData = storage.map((d, i) => {
+  //     return d;
+  //   });
   // } else {
     currentData = prevData.map((d, i) => {
-      const sliced = frequencyData.slice(0, 5308);
+      const sliced = frequencyData.slice(0, 5280);
       let diff1 = Math.abs(d - sliced[1])/1000 + d;
-      // let diff2 = Math.abs(sliced[i] - d)/1000 + volcano.values[i];
       let diff2 = diff1 - 0.1;
       let diffF = (count % 100) ? diff1 : diff2;
-      storage.push(diff2);
+      if (count % 300 === 0) diffF = diff1 - 10.01;
       return diffF;
     })
   // }
@@ -149,8 +140,32 @@ const renderData = () => {
   if (playing) requestAnimationFrame(renderData);
 };
 
+let menuIsVisible = false;
+const addButtonListeners = () => {
+  const compass = document.getElementById('compass');
+  const menu = document.getElementById('menu');
+
+  const hideMenu = () => {
+    menu.classList.add('hide');
+    menu.classList.remove('show');
+    menuIsVisible = false;
+  };
+
+  const showMenu = () => {
+    menu.classList.add('show');
+    menu.classList.remove('hide');
+    menuIsVisible = true;
+  };
+
+  compass.addEventListener('click', () => {
+    console.log('visible: ', menuIsVisible)
+    menuIsVisible ? hideMenu() : showMenu();
+  })
+}
+
 const init = () => {
   setUpAudio();
+  addButtonListeners();
 };
 
 init();

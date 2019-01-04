@@ -31,10 +31,25 @@ html {
 body {
 	background: rgb(241, 219, 217);
 	height: 100%;
+	overscroll-behavior: none;
 }
 
 ::-webkit-scrollbar {
 	display: none;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+#menu {
+	background: white;
+  width: 200px;
+  height: 80%;
 }
 
 .main-outer {
