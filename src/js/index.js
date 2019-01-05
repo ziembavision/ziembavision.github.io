@@ -127,6 +127,7 @@ const renderData = () => {
 
 
 let menuIsVisible = false;
+let viewIsVisible = false;
 const addButtonListeners = () => {
   const compass = document.getElementById('compass');
   const menu = document.getElementById('menu');
@@ -151,6 +152,31 @@ const addButtonListeners = () => {
   aboutButton.addEventListener('click', () => {
     aboutTarget.scrollIntoView({behavior: "smooth"});
   });
+
+  const hideView = () => {
+    view.classList.add('hide');
+    view.classList.remove('show');
+    viewIsVisible = false;
+  };
+
+  const showView = () => {
+    view.classList.add('show');
+    view.classList.remove('hide');
+    viewIsVisible = true;
+    if (menuIsVisible) hideMenu();
+  };
+
+  const view = document.getElementById('view');
+
+  aboutTarget.addEventListener('click', () => viewIsVisible ? hideView() : showView());
+  view.addEventListener('click', () => hideView());
+
+  const title = document.querySelector('.title');
+  const home = document.getElementById('home');
+
+  title.addEventListener('click', () => {
+    home.scrollIntoView({behavior: 'smooth'});
+  })
 
   const playButton = document.getElementById('veritas-in-terra');
   playButton.addEventListener('click', () => {

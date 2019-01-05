@@ -14,7 +14,7 @@ $breakpoint-xl: 1200px;
 		z-index: -20;
 	}
 	1% {
-		display: block;
+		display: flex;
 		opacity: 0;
 	}
 	100% {
@@ -24,12 +24,16 @@ $breakpoint-xl: 1200px;
 }
 
 html {
-	box-sizing: border-box;
 	height: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
 	background: rgb(241, 219, 217);
+	font-family: 'Forum', cursive;
 	height: 100%;
 	overscroll-behavior: none;
 }
@@ -40,10 +44,14 @@ body {
 
 .hide {
 	display: none;
+	opacity: 0;
+	transition: fadeIn;
 }
 
 .show {
 	display: flex;
+	opacity: 0.75;
+	transition: fadeIn;
 }
 
 #menu {
@@ -63,11 +71,21 @@ body {
 	position: absolute;
 }
 
+#home {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
 #anchor-about {
 	cursor: pointer;
+	font-family: 'Forum', cursive;
+	font-size: 1.5em;
 }
 
 #about {
+	cursor: pointer;
+	font-size: 1.5em;
 	position: absolute;
   left: 2400px;
   top: 1800px;
@@ -92,8 +110,12 @@ body {
 }
 
 .title {
+	cursor: pointer;
+	font-family: 'Forum', cursive;
+	font-size: 3em;
+  letter-spacing: 0.03em;
 	position: fixed;
-  transform: translateY(-270px);
+  top: 10px;
 }
 
 .grid-outer {
@@ -135,22 +157,12 @@ body {
 }
 
 #view {
-	background: white;
-	height: 100%;
-	opacity: 0;
-	position: absolute;
-	transition: fadeIn;
-	width: 100%;
-	z-index: -20;
-}
-
-#home {
-	background: white;
-	height: 50px;
-	position: absolute;
-	left: 3000px;
-	top: 5000px;
-	width: 100px;
+  background: white;
+  height: 80%;
+  padding: 80px;
+  position: fixed;
+  width: 80%;
+  z-index: 2;
 }
 
 #item-1 {
