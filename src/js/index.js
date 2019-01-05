@@ -105,22 +105,15 @@ const renderData = () => {
   // analyser.getByteTimeDomainData(timeData);
 
   let prevData = currentData;
-  // if (count % 25 === 0) {
-  // // currentData = prevData.map(d => toggle ? d + 0.5 : d - 0.12345);
-  // // console.log('count: ', count, count % 2)
-  //   currentData = storage.map((d, i) => {
-  //     return d;
-  //   });
-  // } else {
-    currentData = prevData.map((d, i) => {
-      const sliced = frequencyData.slice(0, 5280);
-      let diff1 = Math.abs(d - sliced[1])/1000 + d;
-      let diff2 = diff1 - 0.1;
-      let diffF = (count % 100) ? diff1 : diff2;
-      if (count % 300 === 0) diffF = diff1 - 10.01;
-      return diffF;
-    })
-  // }
+
+  currentData = prevData.map((d, i) => {
+    const sliced = frequencyData.slice(0, 5280);
+    let diff1 = Math.abs(d - sliced[1])/1000 + d;
+    let diff2 = diff1 - 0.1;
+    let diffF = (count % 100) ? diff1 : diff2;
+    if (count % 300 === 0) diffF = diff1 - 10.01;
+    return diffF;
+  });
 
   count++
   console.log('count: ', count)
@@ -179,7 +172,13 @@ const addButtonListeners = () => {
   const playButton = document.getElementById('veritas-in-terra');
   playButton.addEventListener('click', () => {
     console.log('clikced')
-    veritasPlaying ? audio.pause() : audio.play();
+    if (!veritasPlaying) {
+     audio.pause();
+     currentData = volcano.values;
+     renderData(); 
+    } else {
+      audio.play();
+    }
     veritasPlaying = !veritasPlaying;
   })
 }
