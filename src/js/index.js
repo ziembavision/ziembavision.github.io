@@ -176,6 +176,7 @@ const addButtonListeners = () => {
 
   title.addEventListener('click', () => {
     home.scrollIntoView({behavior: 'smooth'});
+    currentData = volcano.values;
   })
 
   const playButton = document.getElementById('veritas-in-terra');
