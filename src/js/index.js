@@ -1,3 +1,5 @@
+import smoothscroll from 'smoothscroll-polyfill';
+
 import getSong from './utils';
 import volcano from './volcano';
 
@@ -22,55 +24,29 @@ let svg = d3.select("svg"),
     height = +svg.attr("height"),
     color,
     analyser,
-    bufferLength = 16384,
+    bufferLength = 10560,
     dataLength = 5307,
     frequencyData,
     timeData,
-    audio;
+    audio,
+    audioCtx;
 
 let currentData = volcano.values;
 let playing = false;
 
 const setUpAudio = () => {
-  audio = new Audio()
+  audio = new Audio();
   audio.controls = false;
   audio.src = getSong();
   document.body.append(audio);
 
-  audio.onplaying = () => {
-    console.log('playing!');
-    if (!playing) {
-      playing = true;
-      renderData();
-    }
-  };
-
-  audio.onpause = () => {
-    console.log('paused!');
-    if (playing) playing = false;
-  };
-
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  analyser = audioCtx.createAnalyser();
-
   frequencyData = new Uint8Array(bufferLength); // array of integers
-  timeData = new Uint8Array(bufferLength);
-  // console.log('frequencyData: ', frequencyData, 'timeData: ', timeData, 'values: ', volcano.values.length);
-
-  // Load Web Audio
-  window.addEventListener('load', () => {
-    audioCtx.createMediaElementSource(audio).connect(analyser);
-    analyser.connect(audioCtx.destination);
-  }, false);
-
-  createSvgD3();
 };
 
 const i0 = interpolateHsvLong(hsv(240, 1, 0.65), hsv(60, 0, 0.90));
 const i1 = interpolateHsvLong(hsv(60, 1, 0.90), hsv(0, 0, 0.95));
     
 const interpolateTerrain = (t) => { 
-  // console.log('t: ', t)
   return t < 0.5 ? 
     i0(t * 2) : i1((t - 0.5) * 2); 
 };
@@ -90,42 +66,45 @@ const createSvgD3 = () => {
         d3.geoIdentity()
           .scale(width / volcano.width)
       ))
-      .attr('fill', (d) => {
-        // console.log('color value: ', d.value)
-        return color(d.value)
-      });
+      .attr('fill', (d) => color(d.value));
+};
 
-  // renderData();
+let context = false;
+const playAudio = () => {
+  console.log('playing audio')
+
+  if (!context) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    audioCtx.createMediaElementSource(audio).connect(analyser);
+    analyser.connect(audioCtx.destination);
+    context = true;
+  };
+
+  audio.play();
+  playing = true;
+  renderData();
+};
+
+const pauseAudio = () => {
+  audio.pause()
+  // currentData = volcano.values;
+  playing = false;
 };
 
 let count = 0;
 const renderData = () => {
-  // Map frequency data to frequencyData typed array
-  analyser.getByteFrequencyData(frequencyData);
-  // analyser.getByteTimeDomainData(timeData);
+  analyser.getByteFrequencyData(frequencyData); // Map frequency data to frequencyData typed array
 
   let prevData = currentData;
-  // if (count % 25 === 0) {
-  // // currentData = prevData.map(d => toggle ? d + 0.5 : d - 0.12345);
-  // // console.log('count: ', count, count % 2)
-  //   currentData = storage.map((d, i) => {
-  //     return d;
-  //   });
-  // } else {
-    currentData = prevData.map((d, i) => {
-      const sliced = frequencyData.slice(0, 5280);
-      let diff1 = Math.abs(d - sliced[1])/1000 + d;
-      let diff2 = diff1 - 0.1;
-      let diffF = (count % 100) ? diff1 : diff2;
-      if (count % 300 === 0) diffF = diff1 - 10.01;
-      return diffF;
-    })
-  // }
-
-  count++
-  console.log('count: ', count)
-
-  // console.log('frequencyData: ', frequencyData, 'timeData: ', timeData);
+  currentData = prevData.map((d, i) => {
+    const sliced = frequencyData.slice(0, 5280);
+    let diff1 = Math.abs(d - sliced[1])/1000 + d;
+    let diff2 = diff1 - 0.1;
+    let diffF = (count % 100) ? diff1 : diff2;
+    if (count % 300 === 0) diffF = diff1 - 10.01;
+    return diffF;
+  });
 
   if (currentData !== prevData) {
     // Update d3 visual with new data
@@ -139,15 +118,15 @@ const renderData = () => {
       .attr('d', d3.geoPath(
         d3.geoIdentity()
           .scale(width / volcano.width)
-      ))
-      //.attr('fill', (d) => color(d.value));
+      ));
   }
 
+  count++
   if (playing) requestAnimationFrame(renderData);
 };
 
+
 let menuIsVisible = false;
-let veritasPlaying = false;
 const addButtonListeners = () => {
   const compass = document.getElementById('compass');
   const menu = document.getElementById('menu');
@@ -164,10 +143,7 @@ const addButtonListeners = () => {
     menuIsVisible = true;
   };
 
-  compass.addEventListener('click', () => {
-    console.log('visible: ', menuIsVisible)
-    menuIsVisible ? hideMenu() : showMenu();
-  });
+  compass.addEventListener('click', () => menuIsVisible ? hideMenu() : showMenu());
 
   const aboutButton = document.getElementById('anchor-about');
   const aboutTarget = document.getElementById('about');
@@ -179,12 +155,12 @@ const addButtonListeners = () => {
   const playButton = document.getElementById('veritas-in-terra');
   playButton.addEventListener('click', () => {
     console.log('clikced')
-    veritasPlaying ? audio.pause() : audio.play();
-    veritasPlaying = !veritasPlaying;
-  })
+    !playing ? playAudio() : pauseAudio();
+  });
 }
 
 const init = () => {
+  createSvgD3();
   setUpAudio();
   addButtonListeners();
 };
