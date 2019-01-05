@@ -1,4 +1,4 @@
-const getSong = () => '../../assets/audio/i-built-utopia.mp3';
+const getSong = () => '../../assets/audio/veritas-in-terra.mp3';
 
 const getRandomInt = (max) => 
 	Math.floor(Math.random() + Math.floor(max));

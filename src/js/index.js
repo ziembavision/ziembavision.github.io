@@ -4,6 +4,19 @@ import volcano from './volcano';
 const d3 = require('d3');
 const { hsv, interpolateHsvLong } = require('d3-hsv');
 
+/*
+const visualKey = {
+  // domain.range
+  'veritas': [90, 190], 
+  'purples': [160, 320],
+  'blues': [100, 260],
+
+  // primary rainbow colors
+  const i0 = interpolateHsvLong(hsv(340, 1, 0.65), hsv(60, 1, 0.90));
+  const i1 = interpolateHsvLong(hsv(60, 1, 0.90), hsv(0, 1, 0.95));
+}
+*/
+
 let svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height"),
@@ -12,16 +25,15 @@ let svg = d3.select("svg"),
     bufferLength = 16384,
     dataLength = 5307,
     frequencyData,
-    timeData;
+    timeData,
+    audio;
 
 let currentData = volcano.values;
 let playing = false;
 
 const setUpAudio = () => {
-  console.log('in setUpAudio')
-  console.log('making audio. song: ', getSong())
-  const audio = new Audio()
-  audio.controls = true;
+  audio = new Audio()
+  audio.controls = false;
   audio.src = getSong();
   document.body.append(audio);
 
@@ -43,7 +55,7 @@ const setUpAudio = () => {
 
   frequencyData = new Uint8Array(bufferLength); // array of integers
   timeData = new Uint8Array(bufferLength);
-  console.log('frequencyData: ', frequencyData, 'timeData: ', timeData, 'values: ', volcano.values.length);
+  // console.log('frequencyData: ', frequencyData, 'timeData: ', timeData, 'values: ', volcano.values.length);
 
   // Load Web Audio
   window.addEventListener('load', () => {
@@ -79,18 +91,15 @@ const createSvgD3 = () => {
           .scale(width / volcano.width)
       ))
       .attr('fill', (d) => {
-        console.log('color value: ', d.value)
+        // console.log('color value: ', d.value)
         return color(d.value)
       });
 
   // renderData();
 };
 
-let toggle = true;
 let count = 0;
 const renderData = () => {
-  console.log('rendering data: ', playing);
-
   // Map frequency data to frequencyData typed array
   analyser.getByteFrequencyData(frequencyData);
   // analyser.getByteTimeDomainData(timeData);
@@ -112,12 +121,9 @@ const renderData = () => {
       return diffF;
     })
   // }
-  // currentData = frequencyData;
-  toggle = !toggle
-  console.log('toggle: ', toggle);
+
   count++
   console.log('count: ', count)
-  console.log('currentData: ', currentData);
 
   // console.log('frequencyData: ', frequencyData, 'timeData: ', timeData);
 
@@ -141,6 +147,7 @@ const renderData = () => {
 };
 
 let menuIsVisible = false;
+let veritasPlaying = false;
 const addButtonListeners = () => {
   const compass = document.getElementById('compass');
   const menu = document.getElementById('menu');
@@ -168,6 +175,13 @@ const addButtonListeners = () => {
   aboutButton.addEventListener('click', () => {
     aboutTarget.scrollIntoView({behavior: "smooth"});
   });
+
+  const playButton = document.getElementById('veritas-in-terra');
+  playButton.addEventListener('click', () => {
+    console.log('clikced')
+    veritasPlaying ? audio.pause() : audio.play();
+    veritasPlaying = !veritasPlaying;
+  })
 }
 
 const init = () => {
