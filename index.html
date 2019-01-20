@@ -7,22 +7,46 @@
 		<title>Ziemba - Ardis</title>
 		<link rel="stylesheet" href="dist/scss/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	</head>
 	<body>
 	<div class="main-outer">
-		<svg class="map" width="5280" height="3680" stroke="#fff" stroke-width="0.5"></svg>
-		<h1 class="title">Ardis</h1>
-		<div id="view" class="hide">
-			<div>Hello this is all about Ziemba and Ardis. Lorem ipsum.</div>
+		<svg class="map" width="5307" height="3680" stroke="#fff" stroke-width="0"></svg>
+		<h1 id="title" class="title">Ardis</h1>
+		<div id="view" class="view-outer hide">
+			<div id="view-close" class="view-close">x</div>
+			<div class="view-inner">
+				<div id="content-listen" class="view-content"></div>
+				<div id="content-watch" class="view-content hide"></div>
+				<div id="content-press" class="view-content hide"></div>
+				<div id="content-dates" class="view-content hide"></div>
+				<div id="content-about" class="view-content hide"></div>
+				<div id="content-ardis" class="view-content hide"></div>
+			</div>
 		</div>
-		<div id="menu" class="hide">
-			<p id="anchor-about">About &#9819;</p>
-		</div>
+		<nav id="menu" class="nav hide">
+			<ul class="nav-list">
+				<li id="anchor-listen" class="nav-list-item">Listen<span>&#9819;</span></li>
+				<li id="anchor-watch" class="nav-list-item">Watch<span>&#9819;</span></li>
+				<li id="anchor-press" class="nav-list-item">Press<span>&#9819;</span></li>
+				<li id="anchor-person" class="nav-list-item">In Person<span>&#9819;</span></li>
+				<li id="anchor-about" class="nav-list-item">About<span>&#9819;</span></li>
+				<li id="anchor-ardis" class="nav-list-item">Ardis<span>&#9819;</span></li>
+			<ul>
+		</nav>
 		<img id="compass" src="assets/images/compass.png"></img>
+		<div id="volume" class="volume volume--on">
+			<i class="fas fa-volume-up"></i>
+		</div>
 	</div>
 	<div id="home"></div>
+	<div class="map-item" id="listen">&#9819;</div>
+	<div class="map-item" id="watch">&#9819;</div>
+	<div class="map-item" id="press">&#9819;</div>
+	<div class="map-item" id="person">&#9819;</div>
 	<div class="map-item" id="about">&#9819;</div>
-	<div class="map-item" id="veritas-in-terra"></div>
+	<div class="map-item" id="ardis">&#9819;</div>
+	<audio class="map-item" id="veritas-in-terra" src="../../assets/audio/veritas-in-terra.mp3"></audio>
 	<script src="dist/bundle.js"></script>
 	</body>
 </html>

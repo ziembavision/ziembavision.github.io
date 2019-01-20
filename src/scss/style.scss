@@ -11,15 +11,13 @@ $breakpoint-xl: 1200px;
 	0% {
 		display: none;
 		opacity: 0;
-		z-index: -20;
 	}
 	1% {
 		display: flex;
 		opacity: 0;
 	}
 	100% {
-		opacity: 1;
-		z-index: 10;
+		opacity: 0.75;
 	}
 }
 
@@ -38,6 +36,12 @@ body {
 	overscroll-behavior: none;
 }
 
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
 ::-webkit-scrollbar {
 	display: none;
 }
@@ -45,16 +49,16 @@ body {
 .hide {
 	display: none;
 	opacity: 0;
-	transition: fadeIn;
+	animation: fadeIn 1s ease;
 }
 
 .show {
 	display: flex;
 	opacity: 0.75;
-	transition: fadeIn;
+	animation: fadeIn 1s ease;
 }
 
-#menu {
+.nav {
 	box-sizing: border-box;
 	background: white;
 	justify-content: center;
@@ -62,12 +66,27 @@ body {
 	opacity: 0.75;
 	padding: 20px;
 	position: fixed;
-  width: 180px;
-  height: 80%;
+  width: 200px;
+  height: 60%;
   z-index: 2;
+
+  &-list {
+  	width: 100%;
+
+	  &-item {
+	  	cursor: pointer;
+	  	display: flex;
+	  	font-family: 'Forum', cursive;
+			font-size: 1.5em;
+			justify-content: space-between;
+	  	margin-bottom: 20px;
+	  }
+  }
 }
 
 .map-item {
+	cursor: pointer;
+	font-size: 1.5em;
 	position: absolute;
 }
 
@@ -77,16 +96,7 @@ body {
 	top: 0;
 }
 
-#anchor-about {
-	cursor: pointer;
-	font-family: 'Forum', cursive;
-	font-size: 1.5em;
-}
-
 #about {
-	cursor: pointer;
-	font-size: 1.5em;
-	position: absolute;
   left: 2400px;
   top: 1800px;
 }
@@ -135,6 +145,8 @@ body {
 	/*border: 5px groove rosybrown;*/
 	position: absolute;
 	z-index: -5;
+	top: -600px;
+	left: -400px;
 
 	&-outer {
 		display: flex;
@@ -154,15 +166,6 @@ body {
 	position: fixed;
   width: 100px;
   z-index: 3;
-}
-
-#view {
-  background: white;
-  height: 80%;
-  padding: 80px;
-  position: fixed;
-  width: 80%;
-  z-index: 2;
 }
 
 #item-1 {
@@ -196,4 +199,42 @@ body {
 	filter: hue-rotate(220deg) brightness(180%) contrast(100%);
 }
 
+.volume {
+	align-items: center;
+	bottom: 20px;
+	cursor: pointer;
+	display: flex;
+	font-size: 1.25em;
+	font-weight: 600;
+	height: 100px;
+	justify-content: center;
+	position: fixed;
+	right: 20px;
+	width: 100px;
+	z-index: 3;
+}
+
+.view {
+	&-outer {
+		background: white;
+	  height: 80%;
+	  position: fixed;
+	  width: 80%;
+	  z-index: 2;
+	}
+
+	&-inner {
+		overflow: auto;
+		padding: 40px;
+	}
+
+	&-close {
+		cursor: pointer;
+    height: 10px;
+    margin: 10px;
+    position: absolute;
+    right: 0;
+    width: 10px;
+	}
+}
 
