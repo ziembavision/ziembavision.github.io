@@ -4,9 +4,9 @@ import { debounce } from '../utils';
 import aboutTemplate from './cms/about';
 
 const buttons = () => {
-  console.log('riunning')
   let menuIsVisible = false;
   let viewIsVisible = false;
+  let currentView;
 
   const showMenu = () => {
     $menu.classList.add('show');
@@ -43,7 +43,15 @@ const buttons = () => {
     });
 
     $targets[key].addEventListener('click', debounce(() => {
-      viewIsVisible ? hideView() : showView()
+      const id = key === 'person' ? `content-dates` : `content-${key}`;
+      const contentElement = document.getElementById(id);
+      const prevView = currentView;
+      currentView = contentElement;
+
+      contentElement.classList.remove('hide');
+      if (prevView) prevView.classList.add('hide');
+
+      viewIsVisible ? hideView() : showView();
     }, 300));
   });
 

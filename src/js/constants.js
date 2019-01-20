@@ -19,7 +19,6 @@ const $view = document.getElementById('view');
 const $viewClose = document.getElementById('view-close');
 const $title = document.getElementById('title');
 const $home = document.getElementById('home');
-// menu buttons
 const $buttons = {
 	listen: document.getElementById('anchor-listen'),
 	watch: document.getElementById('anchor-watch'),
@@ -28,13 +27,6 @@ const $buttons = {
 	about: document.getElementById('anchor-about'),
 	ardis: document.getElementById('anchor-ardis')
 };
-// const $listenButton = document.getElementById('anchor-listen');
-// const $watchButton = document.getElementById('anchor-watch');
-// const $pressButton = document.getElementById('anchor-press');
-// const $personButton = document.getElementById('anchor-person');
-// const $aboutButton = document.getElementById('anchor-about');
-// const $ardisButton = document.getElementById('anchor-ardis');
-// menu targets
 const $targets = {
 	listen: document.getElementById('listen'),
 	watch: document.getElementById('watch'),
@@ -43,16 +35,9 @@ const $targets = {
 	about: document.getElementById('about'),
 	ardis: document.getElementById('ardis')
 };
-// const $listenTarget = document.getElementById('listen');
-// const $watchTarget = document.getElementById('watch');
-// const $pressTarget = document.getElementById('press');
-// const $personTarget = document.getElementById('person');
-// const $aboutTarget = document.getElementById('about');
-// const $ardisTarget = document.getElementById('ardis');
 
 let currentData = volcano.values;
 let frequencyData = new Uint8Array(bufferLength);
-let currentContent;
 
 export {
 	d3,
