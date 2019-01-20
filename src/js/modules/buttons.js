@@ -45,8 +45,12 @@ const buttons = () => {
     $targets[key].addEventListener('click', debounce(() => {
       const id = key === 'person' ? `content-dates` : `content-${key}`;
       const contentElement = document.getElementById(id);
-      const prevView = currentView;
-      currentView = contentElement;
+      let prevView;
+      
+      if (currentView !== contentElement) {
+        prevView = currentView;
+        currentView = contentElement;
+      };
 
       contentElement.classList.remove('hide');
       if (prevView) prevView.classList.add('hide');
