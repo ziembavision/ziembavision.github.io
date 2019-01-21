@@ -15,60 +15,8 @@ let color,
 
 let currentData = volcano.values;
 let playing = false;
-
-// const setUpAudio = () => {
-//   // audio = new Audio();
-//   // audio.controls = false;
-//   // audio.src = getSong();
-//   // document.body.append(audio);
-
-//   
-// };
-
-const createSvgD3 = () => {     
-  color = d3.scaleSequential(interpolateTerrain)
-    .domain([90, 190]);
-
-  svg.selectAll("path")
-    .data(d3.contours()
-      .size([ volcano.width, volcano.height ])
-      .thresholds(d3.range(90, 195, 5))
-      (volcano.values)
-    )
-    .enter().append("path")
-      .attr('d', d3.geoPath(
-        d3.geoIdentity()
-          .scale(width / volcano.width) 
-      ))
-      .attr('fill', (d) => color(d.value))
-};
-
-let context = false;
-const playAudio = () => {
-  if (!context) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    analyser = audioCtx.createAnalyser();
-    audioCtx.createMediaElementSource($audio).connect(analyser);
-    analyser.connect(audioCtx.destination);
-    context = true;
-  };
-
-  // $volume.classList.remove('hide');
-  $up.classList.remove('hide');
-
-  $audio.play();
-  playing = true;
-  console.log('playing: ', playing, $volume)
-  renderData();
-};
-
-const pauseAudio = () => {
-  $audio.pause()
-  $volume.classList.add('hide');
-  currentData = volcano.values;
-  playing = false;
-  console.log('playing: ', playing, $volume)
-};
+let paused = false;
+let currentSong;
 
 let count = 0;
 const renderData = () => {
@@ -101,33 +49,122 @@ const renderData = () => {
   }
 
   count++
-  if (playing) requestAnimationFrame(renderData);
+  if (playing && !paused) requestAnimationFrame(renderData);
+};
+
+const createSvgD3 = () => {     
+  color = d3.scaleSequential(interpolateTerrain)
+    .domain([90, 190]);
+
+  svg.selectAll("path")
+    .data(d3.contours()
+      .size([ volcano.width, volcano.height ])
+      .thresholds(d3.range(90, 195, 5))
+      (volcano.values)
+    )
+    .enter().append("path")
+      .attr('d', d3.geoPath(
+        d3.geoIdentity()
+          .scale(width / volcano.width) 
+      ))
+      .attr('fill', (d) => color(d.value))
+};
+
+const audioFadeOut = () => {
+  if ($audio.volume > 0.1) {
+    $audio.volume -= 0.1;
+    setTimeout(audioFadeOut(), 2);
+  } else {
+    $audio.pause();
+    playing = false;
+  }
+};
+
+const audioFadeIn = () => {
+  if (!playing) {
+    $audio.volume = 0;
+    $audio.play();
+    playing = true;
+  }
+  if ($audio.volume === 0.9) {
+    $audio.volume = 1;
+  }
+  if ($audio.volume < 0.9) {
+    $audio.volume += 0.1;
+    setTimeout(audioFadeIn(), 2);
+  }
+}
+
+let context = false;
+const playAudio = () => {
+  if (!context) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    audioCtx.createMediaElementSource($audio).connect(analyser);
+    analyser.connect(audioCtx.destination);
+    context = true;
+  };
+
+  $volumeUp.classList.remove('hidden');
+  $volumeUp.classList.add('show');
+
+  audioFadeIn();
+  playing = true;
+  paused = false;
+  renderData();
+};
+
+const stopAudio = () => {
+    audioFadeOut();
+    if (paused) {
+      $volumeMute.classList.add('hide', 'hidden');
+      $volumeMute.classList.remove('show');
+    } else if (!paused) {
+      $volumeUp.classList.add('hide', 'hidden');
+      $volumeUp.classList.remove('show');
+    }
+    paused = false;
+    currentData = volcano.values;
 };
 
 const initAudio = () => {
   $audioButtons.forEach(button => {
     button.button.addEventListener('click', debounce(() => {
+      if (currentSong !== button.src) {
+        currentSong = button.src;
+        playing = false;
+        if (paused) {
+          $volumeMute.classList.add('hide', 'hidden');
+          $volumeMute.classList.remove('show');
+        }
+        paused = false;
+      }
       $audio.src = button.src;
-      playing ? pauseAudio() : playAudio();
+      if (playing || paused) {
+        stopAudio()
+      } else playAudio();
     }, 300));
   });
 
   $volumeUp.addEventListener('click', debounce(() => {
-    console.log('clicked volume: ', $volume, playing)
     if (playing) {
-      $mute.classList.remove('hide');
-      $up.classList.add('hide');
-      console.log('vol ', $volume)
-      $audio.pause();
-      playing = false;
-    } else {
-      $up.classList.remove('hide');
-      $mute.classList.add('hide');
-      console.log('vol ', $volume)
-      $audio.play();
-      playing = true;
-      renderData();
+      $volumeMute.classList.remove('hide', 'hidden');
+      $volumeMute.classList.add('show');
+      $volumeUp.classList.add('hide');
+      $volumeUp.classList.remove('show');
+      audioFadeOut();
+      paused = true;
     }
+  }, 300));
+
+  $volumeMute.addEventListener('click', debounce(() => {
+      $volumeMute.classList.remove('show');
+      $volumeMute.classList.add('hide', 'hidden');
+      $volumeUp.classList.add('show');
+      $volumeUp.classList.remove('hide', 'hidden');
+      audioFadeIn();
+      paused = false;
+      renderData();
   }, 300));
 };
 
