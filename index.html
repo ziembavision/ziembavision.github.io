@@ -128,6 +128,7 @@
 			</div>
 		</div>
 		<nav id="menu" class="nav hide">
+			<div id="menu-close" class="menu-close">&#10005;</div>
 			<ul class="nav-list">
 				<li id="anchor-listen" class="nav-list-item">Listen<span>&#9731;</span></li>
 				<li id="anchor-watch" class="nav-list-item">Watch<span>&#9739;</span></li>
@@ -138,7 +139,7 @@
 			<ul>
 		</nav>
 		<img id="compass" src="assets/images/compass.png"></img>
-		<div id="volume" class="volume volume--on">
+		<div id="volume" class="volume volume--on hide">
 			<i class="fas fa-volume-up"></i>
 		</div>
 	</div>
@@ -149,7 +150,12 @@
 	<div class="map-item" id="person">&#9815;</div>
 	<div class="map-item" id="about">&#9819;</div>
 	<div class="map-item" id="ardis">&#9831;</div>
-	<audio class="map-item" id="veritas-in-terra" src="../../assets/audio/veritas-in-terra.mp3"></audio>
+	<div class="map-item map-item--audio" id="veritas-in-terra"></div>
+	<div class="map-item map-item--audio" id="all-doors-have-keys"></div>
+	<div class="map-item map-item--audio" id="lips-2-lips"></div>
+	<div class="map-item map-item--audio" id="ugly-ambitious-women"></div>
+	<div class="map-item map-item--audio" id="i-built-utopia"></div>
+	<audio id="player"></audio>
 	<script src="dist/bundle.js"></script>
 	</body>
 </html>

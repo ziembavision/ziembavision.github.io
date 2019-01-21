@@ -2,21 +2,18 @@
 
 import volcano from './volcano';
 import cms from './modules/cms';
-import { d3, hsv, interpolateTerrain, svg, width, height, $title, $home } from './constants';
+import { d3, hsv, interpolateTerrain, svg, width, height, bufferLength, $title, $home, $volume, $audio, $audioButtons } from './constants';
 import { buttons } from './modules';
 
 let color,
     analyser,
-    bufferLength = 10560,
-    dataLength = 5307,
-    slicedLength = 5280,
+    // dataLength = 5307,
+    // slicedLength = 5280,
     frequencyData,
-    timeData,
-    audio,
     audioCtx;
 
-// let currentData = volcano.values;
-// let playing = false;
+let currentData = volcano.values;
+let playing = false;
 
 // const setUpAudio = () => {
 //   // audio = new Audio();
@@ -24,7 +21,7 @@ let color,
 //   // audio.src = getSong();
 //   // document.body.append(audio);
 
-//   frequencyData = new Uint8Array(bufferLength); // array of integers
+//   
 // };
 
 const createSvgD3 = () => {     
@@ -47,31 +44,31 @@ const createSvgD3 = () => {
 
 let context = false;
 const playAudio = () => {
-  console.log('playing audio')
-
+  console.log('playing: ', playing)
   if (!context) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     analyser = audioCtx.createAnalyser();
-    audioCtx.createMediaElementSource(audio).connect(analyser);
+    audioCtx.createMediaElementSource($audio).connect(analyser);
     analyser.connect(audioCtx.destination);
     context = true;
   };
 
-  audio.play();
+  $volume.classList.remove('hide');
+  $audio.play();
   playing = true;
   renderData();
 };
 
 const pauseAudio = () => {
-  audio.pause()
-  // currentData = volcano.values;
+  $audio.pause()
+  $volume.classList.add('hide');
+  currentData = volcano.values;
   playing = false;
 };
 
 let count = 0;
 const renderData = () => {
   analyser.getByteFrequencyData(frequencyData); // Map frequency data to frequencyData typed array
-  console.log('frequencyData length: ', frequencyData.length);
 
   let prevData = currentData;
   currentData = prevData.map((d, i) => {
@@ -103,10 +100,23 @@ const renderData = () => {
   if (playing) requestAnimationFrame(renderData);
 };
 
+const initAudio = () => {
+  $audioButtons.forEach(button => {
+    button.button.addEventListener('click', () => {
+      $audio.src = button.src;
+      console.log('audio: ', $audio);
+      playing ? pauseAudio() : playAudio();
+    });
+  })
+};
+
 const init = () => {
+  frequencyData = new Uint8Array(bufferLength); // array of integers
+
   cms();
   createSvgD3();
   buttons();
+  initAudio();
 
   $title.addEventListener('click', () => {
     $home.scrollIntoView({behavior: 'smooth'});

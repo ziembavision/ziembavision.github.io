@@ -1,5 +1,3 @@
-import volcano from './volcano';
-
 const d3 = require('d3');
 const { hsv, interpolateHsvLong } = require('d3-hsv');
 
@@ -9,8 +7,8 @@ const interpolateTerrain = (t) => t < 0.5 ?
 	i0(t * 2) : i1((t - 0.5) * 2); 
 
 const svg = d3.select('svg');
-const width = +svg.attr('width');
 const height = +svg.attr('height');
+const width = +svg.attr('width');
 const bufferLength = 10560;
 
 const $compass = document.getElementById('compass');
@@ -19,6 +17,9 @@ const $view = document.getElementById('view');
 const $viewClose = document.getElementById('view-close');
 const $title = document.getElementById('title');
 const $home = document.getElementById('home');
+const $volume = document.getElementById('volume');
+const $audio = document.getElementById('player');
+
 const $buttons = {
 	listen: document.getElementById('anchor-listen'),
 	watch: document.getElementById('anchor-watch'),
@@ -36,24 +37,48 @@ const $targets = {
 	ardis: document.getElementById('ardis')
 };
 
-let currentData = volcano.values;
-let frequencyData = new Uint8Array(bufferLength);
+const $audioButtons = [
+	{ 
+		button: document.getElementById('veritas-in-terra'),
+		src: '../../assets/audio/veritas-in-terra.mp3' 
+	},
+	{ 
+		button: document.getElementById('i-built-utopia'),
+		src: '../../assets/audio/i-built-utopia.mp3' 
+	},
+	{ 
+		button: document.getElementById('lips-2-lips'),
+		src: '../../assets/audio/lips-2-lips.mp3' 
+	},
+	{ 
+		button: document.getElementById('ugly-ambitious-women'),
+		src: '../../assets/audio/ugly-ambitious-women.mp3' 
+	},
+	{ 
+		button: document.getElementById('all-doors-have-keys'),
+		src:  '../../assets/audio/all-doors-have-keys.mp3' 
+	}
+];
 
 export {
 	d3,
 	hsv,
 	interpolateTerrain,
 	svg,
-	width,
 	height,
+	width,
+	bufferLength,
 	$compass,
 	$menu,
-	$buttons,
-	$targets,
 	$view,
 	$viewClose,
 	$title,
-	$home
+	$home,
+	$volume,
+	$audio,
+	$buttons,
+	$targets,
+	$audioButtons
 };
 
 /*
