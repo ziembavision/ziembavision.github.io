@@ -2,8 +2,9 @@
 
 import volcano from './volcano';
 import cms from './modules/cms';
-import { d3, hsv, interpolateTerrain, svg, width, height, bufferLength, $title, $home, $volume, $audio, $audioButtons } from './constants';
+import { d3, hsv, interpolateTerrain, svg, width, height, bufferLength, $title, $home, $volumeUp, $volumeMute, $audio, $audioButtons } from './constants';
 import { buttons } from './modules';
+import { debounce } from './utils';
 
 let color,
     analyser,
@@ -44,7 +45,6 @@ const createSvgD3 = () => {
 
 let context = false;
 const playAudio = () => {
-  console.log('playing: ', playing)
   if (!context) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     analyser = audioCtx.createAnalyser();
@@ -53,9 +53,12 @@ const playAudio = () => {
     context = true;
   };
 
-  $volume.classList.remove('hide');
+  // $volume.classList.remove('hide');
+  $up.classList.remove('hide');
+
   $audio.play();
   playing = true;
+  console.log('playing: ', playing, $volume)
   renderData();
 };
 
@@ -64,6 +67,7 @@ const pauseAudio = () => {
   $volume.classList.add('hide');
   currentData = volcano.values;
   playing = false;
+  console.log('playing: ', playing, $volume)
 };
 
 let count = 0;
@@ -102,12 +106,29 @@ const renderData = () => {
 
 const initAudio = () => {
   $audioButtons.forEach(button => {
-    button.button.addEventListener('click', () => {
+    button.button.addEventListener('click', debounce(() => {
       $audio.src = button.src;
-      console.log('audio: ', $audio);
       playing ? pauseAudio() : playAudio();
-    });
-  })
+    }, 300));
+  });
+
+  $volumeUp.addEventListener('click', debounce(() => {
+    console.log('clicked volume: ', $volume, playing)
+    if (playing) {
+      $mute.classList.remove('hide');
+      $up.classList.add('hide');
+      console.log('vol ', $volume)
+      $audio.pause();
+      playing = false;
+    } else {
+      $up.classList.remove('hide');
+      $mute.classList.add('hide');
+      console.log('vol ', $volume)
+      $audio.play();
+      playing = true;
+      renderData();
+    }
+  }, 300));
 };
 
 const init = () => {

@@ -20,6 +20,19 @@ $breakpoint-xl: 1200px;
 	}
 }
 
+@keyframes fadeOut {
+	0% {
+		display: flex;
+		opacity: 0.9;
+	}
+	75% {
+		opacity: 0;
+	}
+	100% {
+		display: none;
+	}
+}
+
 html {
 	height: 100%;
 }
@@ -60,10 +73,13 @@ tr {
 	display: none;
 }
 
-.hide {
+.hidden {
 	display: none;
+}
+
+.hide {
 	opacity: 0;
-	animation: fadeIn 1s ease;
+	animation: fadeOut 1s ease;
 }
 
 .show {
@@ -179,7 +195,6 @@ tr {
 	cursor: pointer;
 	position: fixed;
 	top: 20px;
-	z-index: 100;
 
   img {
   	width: 225px;

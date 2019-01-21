@@ -9,7 +9,7 @@ const buttons = () => {
 
   const showMenu = () => {
     $menu.classList.add('show');
-    $menu.classList.remove('hide');
+    $menu.classList.remove('hide', 'hidden');
     menuIsVisible = true;
   };
 
@@ -53,7 +53,7 @@ const buttons = () => {
         currentView = contentElement;
       };
 
-      contentElement.classList.remove('hide');
+      contentElement.classList.remove('hide', 'hidden');
       if (prevView) prevView.classList.add('hide');
 
       viewIsVisible ? hideView() : showView();

@@ -17,7 +17,8 @@ const $view = document.getElementById('view');
 const $viewClose = document.getElementById('view-close');
 const $title = document.getElementById('title');
 const $home = document.getElementById('home');
-const $volume = document.getElementById('volume');
+const $volumeUp = document.getElementById('volume-up');
+const $volumeMute = document.getElementById('volume-mute');
 const $audio = document.getElementById('player');
 
 const $buttons = {
@@ -74,7 +75,8 @@ export {
 	$viewClose,
 	$title,
 	$home,
-	$volume,
+	$volumeUp,
+	$volumeMute,
 	$audio,
 	$buttons,
 	$targets,

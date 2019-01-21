@@ -14,13 +14,13 @@
 	<div class="main-outer">
 		<svg class="map" width="5307" height="3680" stroke="#fff" stroke-width="0"></svg>
 		<div id="title" class="title"><img src="assets/images/title.png" /></div>
-		<div id="view" class="view-outer hide">
+		<div id="view" class="view-outer hidden">
 			<div id="view-close" class="view-close">&#10005;</div>
 			<div class="view-inner">
 				<div id="content-listen" class="view-content"></div>
-				<div id="content-watch" class="view-content hide"></div>
-				<div id="content-press" class="view-content view-content--press hide"></div>
-				<div id="content-dates" class="view-content view-content--dates hide">
+				<div id="content-watch" class="view-content hidden"></div>
+				<div id="content-press" class="view-content view-content--press hidden"></div>
+				<div id="content-dates" class="view-content view-content--dates hidden">
 					<p class="dates-year">2019</p>
 					<table id="dates-list" class="dates-list dates-list--2019"></table>
 					<p class="dates-year">2018</p>
@@ -123,11 +123,11 @@
 					</table>
 				</li>
 				</div>
-				<div id="content-about" class="view-content view-content--about hide"></div>
-				<div id="content-ardis" class="view-content hide"></div>
+				<div id="content-about" class="view-content view-content--about hidden"></div>
+				<div id="content-ardis" class="view-content hidden"></div>
 			</div>
 		</div>
-		<nav id="menu" class="nav hide">
+		<nav id="menu" class="nav hidden">
 			<div id="menu-close" class="menu-close">&#10005;</div>
 			<ul class="nav-list">
 				<li id="anchor-listen" class="nav-list-item">Listen<span>&#9731;</span></li>
@@ -139,8 +139,11 @@
 			<ul>
 		</nav>
 		<img id="compass" src="assets/images/compass.png"></img>
-		<div id="volume" class="volume volume--on hide">
+		<div id="volume-up" class="volume hidden">
 			<i class="fas fa-volume-up"></i>
+		</div>
+		<div id="volume-mute" class="volume hidden">
+			<i class="fas fa-volume-mute"></i>
 		</div>
 	</div>
 	<div id="home"></div>
