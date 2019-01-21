@@ -1,4 +1,6 @@
-import aboutTemplate from './about';
+import watchTemplate from './watch';
+import pressTemplate from './press';
+import datesTemplate from './dates';
 
 const cms = () => {
 	const endpoint = 'https://ardis-360a5.firebaseio.com/data.json?auth=aDROvVNty1cqpgu9Yijkr2Gfk6IR7BywJIHMM32n';
@@ -6,7 +8,7 @@ const cms = () => {
 	const $listen = document.getElementById('content-listen');
 	const $watch = document.getElementById('content-watch');
 	const $press = document.getElementById('content-press');
-	const $dates = document.getElementById('content-dates');
+	const $dates = document.getElementById('dates-list');
 	const $about = document.getElementById('content-about');
 	const $ardis = document.getElementById('content-ardis');
 
@@ -17,17 +19,14 @@ const cms = () => {
 				.then(pages => {
 					pages.forEach(page => {
 						switch(page.title) {
-							case 'listen':
-							$listen.innerHTML = page.section[0].content;
-							break;
 							case 'watch':
-							$watch.innerHTML = page.section[0].content;
+							$watch.innerHTML = watchTemplate(page.section);
 							break;
 							case 'press':
-							$press.innerHTML = page.section[0].content;
+							$press.innerHTML = pressTemplate(page.section);
 							break;
 							case 'dates':
-							$dates.innerHTML = page.section[0].content;
+							$dates.innerHTML = datesTemplate(page.section);
 							break;
 							case 'about':
 							$about.innerHTML = page.section[0].content;

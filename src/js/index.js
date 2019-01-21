@@ -1,6 +1,5 @@
 // import smoothscroll from 'smoothscroll-polyfill';
 
-import getSong from './utils';
 import volcano from './volcano';
 import cms from './modules/cms';
 import { d3, hsv, interpolateTerrain, svg, width, height, $title, $home } from './constants';

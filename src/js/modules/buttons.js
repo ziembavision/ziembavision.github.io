@@ -1,7 +1,6 @@
 import smoothscroll from 'smoothscroll-polyfill';
 import { volcano, currentData, $compass, $menu, $buttons, $targets, $view, $viewClose, $title, $home } from '../constants';
 import { debounce } from '../utils';
-import aboutTemplate from './cms/about';
 
 const buttons = () => {
   let menuIsVisible = false;
@@ -43,10 +42,12 @@ const buttons = () => {
     });
 
     $targets[key].addEventListener('click', debounce(() => {
+      if (key === 'listen') return;
+
       const id = key === 'person' ? `content-dates` : `content-${key}`;
       const contentElement = document.getElementById(id);
       let prevView;
-      
+
       if (currentView !== contentElement) {
         prevView = currentView;
         currentView = contentElement;
