@@ -136,8 +136,8 @@ const initAudio = () => {
         if (paused) {
           $volumeMute.classList.add('hide', 'hidden');
           $volumeMute.classList.remove('show');
+          paused = false;
         }
-        paused = false;
       }
       $audio.src = button.src;
       if (playing || paused) {
@@ -150,7 +150,7 @@ const initAudio = () => {
     if (playing) {
       $volumeMute.classList.remove('hide', 'hidden');
       $volumeMute.classList.add('show');
-      $volumeUp.classList.add('hide');
+      $volumeUp.classList.add('hide', 'hidden');
       $volumeUp.classList.remove('show');
       audioFadeOut();
       paused = true;
