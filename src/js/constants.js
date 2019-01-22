@@ -3,8 +3,6 @@ const { hsv, interpolateHsvLong } = require('d3-hsv');
 
 const i0 = interpolateHsvLong(hsv(240, 1, 0.65), hsv(60, 0, 0.90));
 const i1 = interpolateHsvLong(hsv(60, 1, 0.90), hsv(0, 0, 0.95));
-// const i0 = d3.interpolate(({colors: ["red", "blue"]}, {colors: ["white", "black"]});
-// const i1 = d3.interpolate(({colors: ["orange", "yellow"]}, {colors: ["pink", "purple"]});
 const interpolateTerrain = (t) => t < 0.5 ? 
 	i0(t * 2) : i1((t - 0.5) * 2); 
 

@@ -8,8 +8,7 @@ import { debounce } from './utils';
 
 let color,
     analyser,
-    // dataLength = 5307,
-    // slicedLength = 5280,
+    dataLength = 5307,
     frequencyData,
     audioCtx;
 
@@ -24,8 +23,8 @@ const renderData = () => {
 
   let prevData = currentData;
   currentData = prevData.map((d, i) => {
-    const sliced = frequencyData.slice(0, 5307);
-    let diff1 = Math.abs(d - sliced[1])/1000 + d;
+    const sliced = frequencyData.slice(0, dataLength);
+    let diff1 = Math.abs(d - frequencyData[1])/1000 + d;
     let diff2 = diff1 - 0.4;
     let diffF = (count % 100) ? diff1 : diff2;
     // let diffF = diff1;
@@ -67,13 +66,13 @@ const createSvgD3 = () => {
         d3.geoIdentity()
           .scale(width / volcano.width) 
       ))
-      .attr('fill', (d) => color(d.value))
+      .attr('fill', (d) => color(d.value));
 };
 
 const audioFadeOut = () => {
   if ($audio.volume > 0.1) {
     $audio.volume -= 0.1;
-    setTimeout(audioFadeOut(), 2);
+    setTimeout(audioFadeOut(), 100);
   } else {
     $audio.pause();
     playing = false;
@@ -111,20 +110,22 @@ const playAudio = () => {
   audioFadeIn();
   playing = true;
   paused = false;
-  renderData();
+  setTimeout(() => renderData(), 1);
 };
 
 const stopAudio = () => {
-    audioFadeOut();
     if (paused) {
-      $volumeMute.classList.add('hide', 'hidden');
+      $volumeMute.classList.add('hide');
       $volumeMute.classList.remove('show');
+      setTimeout(() => $volumeMute.classList.add('hidden'), 1100);
     } else if (!paused) {
-      $volumeUp.classList.add('hide', 'hidden');
+      audioFadeOut();
+      $volumeUp.classList.add('hide');
       $volumeUp.classList.remove('show');
+      setTimeout(() => $volumeUp.classList.add('hidden'), 1100);
     }
     paused = false;
-    currentData = volcano.values;
+    setTimeout(() => currentData = volcano.values, 1);
 };
 
 const initAudio = () => {
@@ -166,6 +167,26 @@ const initAudio = () => {
       paused = false;
       renderData();
   }, 300));
+
+  // const $videos = document.getElementById('content-watch');
+  // const videoListener = (mutationsList, observer) => {
+  //   console.log(mutationsList, typeof mutationsList)
+  //   if (Array.from(mutationsList)[0]) {
+  //     console.log('chil? ', $videos.firstElementChild.children)
+  //     Array.from($videos.firstElementChild.children)
+  //       .forEach(video => {
+  //         console.log('video: ', video)
+  //         video.firstElementChild.addEventListener('click', () => {
+  //           console.log('clicked!')
+  //           stopAudio();
+  //         });
+  //       });
+  //     observer.disconnect();
+  //   }
+  // };
+  // const observer = new MutationObserver(videoListener);
+  // observer.observe($videos, { childList: true });
+  
 };
 
 const init = () => {

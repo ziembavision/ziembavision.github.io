@@ -12,8 +12,8 @@
 	</head>
 	<body>
 	<div class="main-outer">
-		<svg class="map" width="5307" height="3680" stroke="#fff" stroke-width="0"></svg>
-		<div id="title" class="title"><img src="assets/images/title.png" />
+		<svg class="map" width="5307" height="3680" stroke="#f1dbd9" stroke-width="0.5"></svg>
+		<div id="title" class="title"><img src="assets/images/ardis2.png" />
 		</div>
 		<div id="view" class="view-outer hidden">
 			<div id="view-close" class="view-close">&#10005;</div>
@@ -131,11 +131,21 @@
 		<nav id="menu" class="nav hidden">
 			<div id="menu-close" class="menu-close">&#10005;</div>
 			<ul class="nav-list">
-				<li id="anchor-listen" class="nav-list-item">Listen<span>&#9731;</span></li>
-				<li id="anchor-watch" class="nav-list-item">Watch<span>&#9739;</span></li>
-				<li id="anchor-press" class="nav-list-item">Press<span>&#9775;</span></li>
-				<li id="anchor-person" class="nav-list-item">In Person<span>&#9815;</span>
-				<li id="anchor-about" class="nav-list-item">About<span>&#9819;</span></li>
+				<li id="anchor-listen" class="nav-list-item">
+					Listen<span><img src="assets/images/listen.png" /></span>
+				</li>
+				<li id="anchor-watch" class="nav-list-item">
+					Watch<span><img src="assets/images/watch.png" /></span>
+				</li>
+				<li id="anchor-press" class="nav-list-item">
+					Press<span><img src="assets/images/press.png" /></span>
+				</li>
+				<li id="anchor-person" class="nav-list-item">
+					In Person<span><img src="assets/images/inperson.png" /></span>
+				</li>
+				<li id="anchor-about" class="nav-list-item">
+					About<span><img src="assets/images/about.png" /></span>
+				</li>
 				<li id="anchor-ardis" class="nav-list-item">Ardis<span>&#9831;</span></li>
 			<ul>
 		</nav>
@@ -148,17 +158,39 @@
 		</div>
 	</div>
 	<div id="home"></div>
-	<div class="map-item" id="listen"><a target="_blank" href="https://ziemba.bandcamp.com/">&#9731;</a></div>
-	<div class="map-item" id="watch">&#9739;</div>
-	<div class="map-item" id="press">&#9775;</div>
-	<div class="map-item" id="person">&#9815;</div>
-	<div class="map-item" id="about">&#9819;</div>
+	<div class="map-item" id="listen">
+		<a target="_blank" href="https://ziemba.bandcamp.com/">
+			<img src="assets/images/listen.png" />
+		</a>
+	</div>
+	<div class="map-item" id="watch">
+		<img src="assets/images/watch.png" />
+	</div>
+	<div class="map-item" id="press">
+		<img src="assets/images/press.png" />
+	</div>
+	<div class="map-item" id="person">
+		<img src="assets/images/inperson.png" />
+	</div>
+	<div class="map-item" id="about">
+		<img src="assets/images/about.png" />
+	</div>
 	<div class="map-item" id="ardis">&#9831;</div>
-	<div class="map-item map-item--audio" id="veritas-in-terra"></div>
-	<div class="map-item map-item--audio" id="all-doors-have-keys"></div>
-	<div class="map-item map-item--audio" id="lips-2-lips"></div>
-	<div class="map-item map-item--audio" id="ugly-ambitious-women"></div>
-	<div class="map-item map-item--audio" id="i-built-utopia"></div>
+	<div class="map-item map-item--audio" id="veritas-in-terra">
+		<img src="assets/images/veritas.png" />
+	</div>
+	<div class="map-item map-item--audio" id="all-doors-have-keys">
+		<img src="assets/images/veritas.png" />
+	</div>
+	<div class="map-item map-item--audio" id="lips-2-lips">
+		<img src="assets/images/ugly-ambitious-women.png" />
+	</div>
+	<div class="map-item map-item--audio" id="ugly-ambitious-women">
+		<img src="assets/images/ugly-ambitious-women.png" />
+	</div>
+	<div class="map-item map-item--audio" id="i-built-utopia">
+		<img src="assets/images/vero.png" />
+	</div>
 	<audio id="player"></audio>
 	<script src="dist/bundle.js"></script>
 	</body>

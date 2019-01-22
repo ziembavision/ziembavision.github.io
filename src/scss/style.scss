@@ -33,6 +33,10 @@ $breakpoint-xl: 1200px;
 	}
 }
 
+#foofoo {
+	position: absolute;
+}
+
 html {
 	height: 100%;
 }
@@ -95,10 +99,11 @@ tr {
 	box-sizing: border-box;
 	flex-direction: column;
 	font-size: 0.85em;
+	font-weight: 700;
 	justify-content: center;
 	left: 20px;
 	letter-spacing: 0.1em;
-	padding: 58px 30px 20px 30px;
+	padding: 30px 30px 20px 30px;
 	position: fixed;
   min-width: 250px;
   text-transform: uppercase;
@@ -109,11 +114,16 @@ tr {
   	width: 100%;
 
 	  &-item {
+	  	align-items: center;
 	  	cursor: pointer;
 	  	display: flex;
 			font-size: 1.5em;
 			justify-content: space-between;
 	  	margin-bottom: 30px;
+
+	  	img {
+	  		filter: drop-shadow(1px 1px 1px gray);
+	  	}
 
 	  	&:hover {
 	  		font-style: italic;
@@ -123,17 +133,24 @@ tr {
 }
 
 .map-item {
+	align-items: center;
 	cursor: pointer;
+	display: flex;
+	filter: drop-shadow(2px 2px 3px grey);
 	font-size: 1.5em;
+	justify-content: center;
+	
 	position: absolute;
+	z-index: -1;
 
 	&--audio {
-		background: magenta;
+		max-width: 50px;
+/*		background: magenta;
 		border-radius: 100px;
 		cursor: pointer;
 		height: 40px;
 		position: absolute;
-		width: 40px;
+		width: 40px;*/
 	}
 }
 
@@ -143,29 +160,84 @@ tr {
 	top: 0;
 }
 
+#anchor {
+	&-listen {
+		img {
+			max-width: 50px;
+		}
+	}
+
+	&-watch {
+		img {
+			max-width: 55px;
+		}
+	}
+
+	&-press {
+		img {
+			max-width: 50px;
+			transform: translateX(-5px);
+		}
+	}
+
+	&-person {
+		img {
+			max-width: 37px;
+			transform: rotate(7deg);
+		}
+	}
+
+	&-about {
+		img {
+			max-width: 50px;
+		}
+	}
+}
+
 #listen {
 	left: 2400px;
   top: 1800px;
+
+  img {
+  	max-width: 74px;
+  }
 }
 
 #watch {
 	top: 1000px;
   left: 1500px;
+
+  img {
+  	max-width: 85px;
+  }
 }
 
 #press {
 	top: 2000px;
   left: 400px;
+
+  img {
+  	max-width: 65px;
+    transform: rotate(7deg);
+  }
 }
 
 #person {
 	left: 4000px;
   top: 700px;
+
+  img {
+
+  }
 }
 
 #about {
-  left: 4400px;
+  left: 4000px;
   top: 2800px;
+
+  img {
+  	max-width: 80px;
+  }
 }
 
 #ardis {
@@ -176,6 +248,10 @@ tr {
 #veritas-in-terra {
 	left: 2100px;
 	top: 1400px;
+
+	img {
+		max-width: 50px;
+	}
 }
 
 #all-doors-have-keys {
@@ -197,7 +273,8 @@ tr {
 	top: 20px;
 
   img {
-  	width: 225px;
+  	width: 325px;
+  	filter: drop-shadow(2px 2px 2px grey);
   }
 }
 
@@ -215,17 +292,14 @@ tr {
 }
 
 .map {
-	/*border: 5px groove rosybrown;*/
 	position: absolute;
 	z-index: -5;
-	top: -600px;
-	left: -400px;
+	top: -300px;
+  left: -820px;
 
 	&-outer {
 		display: flex;
 		flex-direction: column;
-/*		justify-content: center;
-		align-items: center;*/
 		position: absolute;
 		width: 100;
 		z-index: -5;
