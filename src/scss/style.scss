@@ -536,6 +536,14 @@ tr {
 	width: 80px;
 }
 
+.lily {
+	width: 80px;
+}
+
+.point {
+	font-weight: bold;
+}
+
 @media screen and (min-width: $breakpoint-md) {
 	.main-outer {
 		align-items: center;
