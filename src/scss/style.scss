@@ -2,7 +2,7 @@
 
 $breakpoint-xs: 375px;
 $breakpoint-sm: 545px;
-$breakpoint-md: 768px;
+$breakpoint-md: 770px;
 $breakpoint-lg: 1024px;
 $breakpoint-xl: 1200px;
 
@@ -16,7 +16,7 @@ $breakpoint-xl: 1200px;
 		opacity: 0;
 	}
 	100% {
-		opacity: 0.9;
+		opacity: 0.75;
 	}
 }
 
@@ -31,10 +31,6 @@ $breakpoint-xl: 1200px;
 	100% {
 		display: none;
 	}
-}
-
-#foofoo {
-	position: absolute;
 }
 
 html {
@@ -56,9 +52,8 @@ p {
 }
 
 body {
-	background: rgb(241, 219, 217);
-	font-family: 'mr-eaves-modern', sans-serif;
-	font-weight: 300;
+	color: rgb(20,5,5);
+	font-family: 'mrs-eaves', sans-serif;
 	height: 100%;
 	overscroll-behavior: none;
 }
@@ -77,6 +72,32 @@ tr {
 	display: none;
 }
 
+.special {
+	font-family: jaf-herb, serif;
+	letter-spacing: 0.08em;
+  margin-right: 2px;
+  text-transform: uppercase;
+
+  &--small {
+  	font-weight: 600;
+    font-family: 'mr-eaves-modern', sans-serif;
+    font-size: 0.9em;
+    letter-spacing: 0.02em;
+  }
+}
+
+.italic {
+	font-style: italic;
+}
+
+.backdrop {
+	background-size: cover;
+	position: absolute;
+  width: 6050px;
+  height: 4700px;
+	z-index: -6;
+}
+
 .hidden {
 	display: none;
 }
@@ -92,22 +113,26 @@ tr {
 	animation: fadeIn 1s ease;
 }
 
+.main-outer {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 60px 0;
+  width: 100%;
+}
+
 .nav {
-	background: #FFFAFA;
-	border: 3px solid gold;
+	background: rgba(230,230,250,0.7);
 	border-radius: 2px;
 	box-sizing: border-box;
+	filter: drop-shadow(1px 1px 1px gray);
 	flex-direction: column;
-	font-size: 0.85em;
-	font-weight: 700;
+	font-family: jaf-herb, serif;
 	justify-content: center;
-	left: 20px;
-	letter-spacing: 0.1em;
-	padding: 30px 30px 20px 30px;
+	padding: 20px 30px;
 	position: fixed;
   min-width: 250px;
-  text-transform: uppercase;
-  transform: translateY(50px);
   z-index: 2;
 
   &-list {
@@ -117,9 +142,11 @@ tr {
 	  	align-items: center;
 	  	cursor: pointer;
 	  	display: flex;
-			font-size: 1.5em;
+	  	font-size: 1.2em;
+	  	height: 80px;
 			justify-content: space-between;
-	  	margin-bottom: 30px;
+			letter-spacing: 0.235em;
+			text-transform: uppercase;
 
 	  	img {
 	  		filter: drop-shadow(1px 1px 1px gray);
@@ -132,10 +159,10 @@ tr {
   }
 }
 
-.map-item {
+.map-icon {
 	align-items: center;
 	cursor: pointer;
-	display: flex;
+	display: none;
 	filter: drop-shadow(2px 2px 3px grey);
 	font-size: 1.5em;
 	justify-content: center;
@@ -145,12 +172,6 @@ tr {
 
 	&--audio {
 		max-width: 50px;
-/*		background: magenta;
-		border-radius: 100px;
-		cursor: pointer;
-		height: 40px;
-		position: absolute;
-		width: 40px;*/
 	}
 }
 
@@ -194,9 +215,10 @@ tr {
 	}
 }
 
+/* map icons */
 #listen {
-	left: 2400px;
-  top: 1800px;
+	/*left: 2400px;
+  top: 1800px;*/
 
   img {
   	max-width: 74px;
@@ -204,8 +226,8 @@ tr {
 }
 
 #watch {
-	top: 1000px;
-  left: 1500px;
+/*	top: 1000px;
+  left: 1500px;*/
 
   img {
   	max-width: 85px;
@@ -213,8 +235,8 @@ tr {
 }
 
 #press {
-	top: 2000px;
-  left: 400px;
+/*	top: 2000px;
+  left: 400px;*/
 
   img {
   	max-width: 65px;
@@ -223,17 +245,18 @@ tr {
 }
 
 #person {
-	left: 4000px;
-  top: 700px;
+/*	left: 3000px;
+  top: 760px;*/
 
   img {
-
+  	max-width: 55px;
+    transform: rotate(7deg);
   }
 }
 
 #about {
-  left: 4000px;
-  top: 2800px;
+/*  left: 3000px;
+  top: 2400px;*/
 
   img {
   	max-width: 80px;
@@ -241,39 +264,44 @@ tr {
 }
 
 #ardis {
-	top: 1600px;
-  left: 1600px;
+/*  top: 2300px;
+  left: 1600px;*/
 }
 
 #veritas-in-terra {
-	left: 2100px;
-	top: 1400px;
+/*	left: 2100px;
+	top: 1400px;*/
 
 	img {
 		max-width: 50px;
 	}
 }
 
-#all-doors-have-keys {
-	top: 2600px;
-  left: 3000px;
+#vero {
+/*	left: 2400px;
+  top: 1000px;*/
+
+  img {
+  	width: 75px;
+  }
 }
 
-.main-outer {
-	align-items: center;
-	display: flex;
-	height: 100%;
-  justify-content: center;
-  width: 100%;
+#ugly-ambitious-women {
+/*	top: 1600px;
+  left: 1200px;*/
+}
+
+#i-built-utopia {
+/*	max-width: 50px;
+	left: 500px;
+  top: 900px;*/
 }
 
 .title {
-	cursor: pointer;
-	position: fixed;
-	top: 20px;
+	text-align: center;
+	margin-bottom: 65px;
 
   img {
-  	width: 325px;
   	filter: drop-shadow(2px 2px 2px grey);
   }
 }
@@ -292,27 +320,18 @@ tr {
 }
 
 .map {
-	position: absolute;
-	z-index: -5;
-	top: -300px;
-  left: -820px;
-
-	&-outer {
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		width: 100;
-		z-index: -5;
-	}
+	display: none;
+	height: 0;
+	width: 0;
 }
 
 #compass {
-	bottom: 20px;
+	display: none;
+}
+
+#compass-sm {
 	cursor: pointer;
-	left: 20px;
-	position: fixed;
-  width: 100px;
-  z-index: 3;
+	width: 200px;
 }
 
 #item-1 {
@@ -365,11 +384,19 @@ tr {
 
 .menu {
 	&-close {
-		cursor: pointer;
-		margin: 10px;
-		position: absolute;
-    right: 0;
-    top: 0;
+		font-family: 'mrs-eaves', serif;
+    text-align: center;
+    font-size: 1em;
+    filter: none;
+    letter-spacing: 0.09em;
+
+    span {
+    	cursor: pointer;
+	    &:hover {
+	    	font-style: italic;
+	    	letter-spacing: 0.2em;
+	    }
+	  }
 	}
 }
 
@@ -379,22 +406,26 @@ tr {
 	width: 99%;
 
 	&-outer {
-		background: #FFFAFA;
+		background: lavender;
 		height: 98.5%;
 	  position: fixed;
-	  width: 99%;
+	  max-width: 700px;
 	  z-index: 2;
+
+	  &.transparent {
+	  	background: rgba(240, 230, 140, 0.3);
+		}
 	}
 
 	&-inner {
 		overflow: auto;
-		padding: 100px 150px;
+		padding: 90px;
 		width: 100%;
 	}
 
 	&-close {
 		cursor: pointer;
-		font-size: 1.5em;
+		font-size: 1.25em;
     margin: 15px;
     position: absolute;
     right: 0;
@@ -427,11 +458,16 @@ tr {
     		font-family: mr-eaves-sans, sans-serif;
     		font-style: italic;
 				letter-spacing: 0.03em;
-				text-decoration: none;
+				text-decoration: underline;
 
     		&:hover {
-					text-decoration: underline;
+					text-decoration: none;
 				}
+    	}
+
+    	h2 {
+    		text-align: center;
+    		margin: 0 0 40px;
     	}
     }
 
@@ -448,12 +484,29 @@ tr {
 				}
     	}
     }
+
+    &--ardis {
+    	h6 {
+    		margin: 30px 0 20px;
+    		font-size: 1em;
+    		text-decoration: underline;
+    	}
+    }
+	}
+}
+
+.press {
+	&-list {
+		&-item {
+			margin-bottom: 10px;
+		}
 	}
 }
 
 .dates {
 	&-list {
-		margin-bottom: 50px;
+		font-size: 0.85em;
+    margin-bottom: 30px;
 	}
 
 	&-year {
@@ -476,6 +529,163 @@ tr {
     &-item {
     	margin-bottom: 50px;
     }
+	}
+}
+
+.rose {
+	width: 80px;
+}
+
+@media screen and (min-width: $breakpoint-md) {
+	.main-outer {
+		align-items: center;
+		flex-direction: row;
+		justify-content: center;
+		padding: 0;
+	}
+
+	.title {
+		cursor: pointer;
+		position: fixed;
+		top: 20px;
+		margin-bottom: 0;
+
+	  img {
+	  	width: 325px;
+	  }
+	}
+
+	#compass {
+		bottom: 40px;
+		cursor: pointer;
+		display: block;
+		left: 20px;
+		position: fixed;
+	  width: 100px;
+	  z-index: 3;
+	}
+
+	#compass-sm {
+		display: none;
+	}
+
+	.nav {
+		left: 20px;
+	}
+
+	.map {
+		display: block;
+		position: absolute;
+		z-index: -5;
+	  top: -300px;
+	  left: -860px;
+	  width: 4277px;
+	  height: 3000px;
+
+		&-outer {
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			width: 100;
+			z-index: -5;
+		}
+	}
+
+	.map-icon {
+		align-items: center;
+		cursor: pointer;
+		display: flex;
+		filter: drop-shadow(2px 2px 3px grey);
+		font-size: 1.5em;
+		justify-content: center;
+		
+		position: absolute;
+		z-index: -1;
+
+		&--audio {
+			max-width: 50px;
+		}
+	}
+/* map icons */
+	#listen {
+		left: 2400px;
+	  top: 1800px;
+
+	  img {
+	  	max-width: 74px;
+	  }
+	}
+
+	#watch {
+		top: 1000px;
+	  left: 1500px;
+
+	  img {
+	  	max-width: 85px;
+	  }
+	}
+
+	#press {
+		top: 2000px;
+	  left: 400px;
+
+	  img {
+	  	max-width: 65px;
+	    transform: rotate(7deg);
+	  }
+	}
+
+	#person {
+		left: 3000px;
+	  top: 760px;
+
+	  img {
+	  	max-width: 55px;
+	    transform: rotate(7deg);
+	  }
+	}
+
+	#about {
+	  left: 3000px;
+	  top: 2400px;
+
+	  img {
+	  	max-width: 80px;
+	  }
+	}
+
+	#ardis {
+	  top: 2300px;
+	  left: 1600px;
+	}
+
+	#veritas-in-terra {
+		left: 2100px;
+		top: 1400px;
+
+		img {
+			max-width: 50px;
+		}
+	}
+
+	#vero {
+		left: 2400px;
+	  top: 1000px;
+
+	  img {
+	  	width: 75px;
+	  }
+	}
+
+	#ugly-ambitious-women {
+		top: 1600px;
+	  left: 1200px;
+	}
+
+	#i-built-utopia {
+		max-width: 50px;
+		left: 500px;
+	  top: 900px;
 	}
 }
 

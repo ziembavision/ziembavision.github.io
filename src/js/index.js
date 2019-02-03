@@ -26,7 +26,7 @@ const renderData = () => {
     const sliced = frequencyData.slice(0, dataLength);
     let diff1 = Math.abs(d - frequencyData[1])/1000 + d;
     let diff2 = diff1 - 0.4;
-    let diffF = (count % 100) ? diff1 : diff2;
+    let diffF = (count % 700) ? diff1 : diff2;
     // let diffF = diff1;
     if (count % 300 === 0) diffF = diff1 - 10.01;
     return diffF;
@@ -67,6 +67,7 @@ const createSvgD3 = () => {
           .scale(width / volcano.width) 
       ))
       .attr('fill', (d) => color(d.value));
+      // .attr('fill', 'lavenderblush');
 };
 
 const audioFadeOut = () => {
@@ -166,27 +167,7 @@ const initAudio = () => {
       audioFadeIn();
       paused = false;
       renderData();
-  }, 300));
-
-  // const $videos = document.getElementById('content-watch');
-  // const videoListener = (mutationsList, observer) => {
-  //   console.log(mutationsList, typeof mutationsList)
-  //   if (Array.from(mutationsList)[0]) {
-  //     console.log('chil? ', $videos.firstElementChild.children)
-  //     Array.from($videos.firstElementChild.children)
-  //       .forEach(video => {
-  //         console.log('video: ', video)
-  //         video.firstElementChild.addEventListener('click', () => {
-  //           console.log('clicked!')
-  //           stopAudio();
-  //         });
-  //       });
-  //     observer.disconnect();
-  //   }
-  // };
-  // const observer = new MutationObserver(videoListener);
-  // observer.observe($videos, { childList: true });
-  
+  }, 300)); 
 };
 
 const init = () => {

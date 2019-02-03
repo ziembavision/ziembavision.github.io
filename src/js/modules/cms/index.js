@@ -8,7 +8,7 @@ const cms = () => {
 	const $listen = document.getElementById('content-listen');
 	const $watch = document.getElementById('content-watch');
 	const $press = document.getElementById('content-press');
-	const $dates = document.getElementById('dates-list');
+	const $dates = document.getElementById('content-dates');
 	const $about = document.getElementById('content-about');
 	const $ardis = document.getElementById('content-ardis');
 
@@ -26,13 +26,14 @@ const cms = () => {
 							$press.innerHTML = pressTemplate(page.section);
 							break;
 							case 'dates':
+							console.log($dates)
 							$dates.innerHTML = datesTemplate(page.section);
 							break;
 							case 'about':
 							$about.innerHTML = page.section[0].content;
 							break;
 							case 'ardis':
-							// $ardis.innerHTML = page.section[0].content;
+							$ardis.innerHTML = page.section[0].content;
 							break;
 						}
 					})

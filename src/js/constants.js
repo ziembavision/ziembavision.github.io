@@ -2,7 +2,17 @@ const d3 = require('d3');
 const { hsv, interpolateHsvLong } = require('d3-hsv');
 
 const i0 = interpolateHsvLong(hsv(240, 1, 0.65), hsv(60, 0, 0.90));
-const i1 = interpolateHsvLong(hsv(60, 1, 0.90), hsv(0, 0, 0.95));
+const i1 = interpolateHsvLong(hsv(60, 1, 0.90), hsv(0, 0.1, 0.95));
+/* primary colors */
+// const i0 = interpolateHsvLong(hsv(240, 0.9, 0.65), hsv(100, 0.2, 0.85));
+// const i1 = interpolateHsvLong(hsv(50, 0.4, 0.90), hsv(0, 0.5, 0.95));
+// const i0 = interpolateHsvLong(hsv(370, 1, 0.65), hsv(100, 0, 0.90));
+/* cool one */
+// const i0 = interpolateHsvLong(hsv(240, 1, 0.65), hsv(50, 0.4, 0.90));
+// const i1 = interpolateHsvLong(hsv(100, 0.2, 0.85), hsv(0, 0.5, 0.95));
+/* lots of colors */
+// const i0 = interpolateHsvLong(hsv(200, 0.9, 0.65), hsv(800, 0.2, 0.85));
+
 const interpolateTerrain = (t) => t < 0.5 ? 
 	i0(t * 2) : i1((t - 0.5) * 2); 
 
@@ -12,7 +22,9 @@ const width = +svg.attr('width');
 const bufferLength = 10560;
 
 const $compass = document.getElementById('compass');
+const $compassSm = document.getElementById('compass-sm');
 const $menu = document.getElementById('menu');
+const $menuClose = document.getElementById('menu-close');
 const $view = document.getElementById('view');
 const $viewClose = document.getElementById('view-close');
 const $title = document.getElementById('title');
@@ -48,16 +60,12 @@ const $audioButtons = [
 		src: '../../assets/audio/i-built-utopia.mp3' 
 	},
 	{ 
-		button: document.getElementById('lips-2-lips'),
-		src: '../../assets/audio/lips-2-lips.mp3' 
-	},
-	{ 
 		button: document.getElementById('ugly-ambitious-women'),
 		src: '../../assets/audio/ugly-ambitious-women.mp3' 
 	},
 	{ 
-		button: document.getElementById('all-doors-have-keys'),
-		src:  '../../assets/audio/all-doors-have-keys.mp3' 
+		button: document.getElementById('vero'),
+		src:  '../../assets/audio/vero.mp3' 
 	}
 ];
 
@@ -70,7 +78,9 @@ export {
 	width,
 	bufferLength,
 	$compass,
+	$compassSm,
 	$menu,
+	$menuClose,
 	$view,
 	$viewClose,
 	$title,
