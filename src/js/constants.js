@@ -24,7 +24,9 @@ const bufferLength = 10560;
 const $compass = document.getElementById('compass');
 const $compassSm = document.getElementById('compass-sm');
 const $menu = document.getElementById('menu');
+const $menuSm = document.getElementById('menu-sm');
 const $menuClose = document.getElementById('menu-close');
+const $menuCloseSm = document.getElementById('menu-close-sm');
 const $view = document.getElementById('view');
 const $viewClose = document.getElementById('view-close');
 const $title = document.getElementById('title');
@@ -41,6 +43,14 @@ const $buttons = {
 	about: document.getElementById('anchor-about'),
 	ardis: document.getElementById('anchor-ardis')
 };
+
+const $buttonsSm = {
+	press: document.getElementById('anchor-press-sm'),
+	person: document.getElementById('anchor-person-sm'),
+	about: document.getElementById('anchor-about-sm'),
+	ardis: document.getElementById('anchor-ardis-sm')
+};
+
 const $targets = {
 	listen: document.getElementById('listen'),
 	watch: document.getElementById('watch'),
@@ -80,7 +90,9 @@ export {
 	$compass,
 	$compassSm,
 	$menu,
+	$menuSm,
 	$menuClose,
+	$menuCloseSm,
 	$view,
 	$viewClose,
 	$title,
@@ -89,6 +101,7 @@ export {
 	$volumeMute,
 	$audio,
 	$buttons,
+	$buttonsSm,
 	$targets,
 	$audioButtons
 };

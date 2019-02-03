@@ -26,7 +26,6 @@ const cms = () => {
 							$press.innerHTML = pressTemplate(page.section);
 							break;
 							case 'dates':
-							console.log($dates)
 							$dates.innerHTML = datesTemplate(page.section);
 							break;
 							case 'about':

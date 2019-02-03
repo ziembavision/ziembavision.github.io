@@ -1,9 +1,7 @@
-// import smoothscroll from 'smoothscroll-polyfill';
-
 import volcano from './volcano';
 import cms from './modules/cms';
 import { d3, hsv, interpolateTerrain, svg, width, height, bufferLength, $title, $home, $volumeUp, $volumeMute, $audio, $audioButtons } from './constants';
-import { buttons } from './modules';
+import { buttons, buttonsSm } from './modules';
 import { debounce } from './utils';
 
 let color,
@@ -176,6 +174,7 @@ const init = () => {
   cms();
   createSvgD3();
   buttons();
+  buttonsSm();
   initAudio();
 
   $title.addEventListener('click', () => {
