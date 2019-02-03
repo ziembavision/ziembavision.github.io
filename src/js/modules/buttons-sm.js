@@ -70,7 +70,6 @@ const buttonsSm = () => {
 
   Object.keys($buttons).forEach(key => {
   	$buttons[key].addEventListener('click', debounce((e) => {
-  		console.log(e.target);
   		const id = key === 'person' ? `content-dates` : `content-${key}`;
   		const contentElement = document.getElementById(id);
 
