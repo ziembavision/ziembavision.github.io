@@ -1,5 +1,10 @@
 const dates = (dates) => {
-	let datesList = `<p class="dates-year">2019</p>
+	let datesList = `<div class="view-icons view-icons--top view-icons--person">
+			<img src="assets/images/inperson.png" />
+			</span><h2>In Person</h2>
+			<img src="assets/images/inperson.png" />
+		</div>
+		<p class="dates-year">2019</p>
 		<table id="dates-list" class="dates-list dates-list--2019">`;
 	dates.forEach(date => {
 		const elem = `<tr class="dates-list-item"><td class="dates-date">${date.date}</td><td>${date.title}</td></tr>`

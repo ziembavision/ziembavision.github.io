@@ -12,6 +12,20 @@ const cms = () => {
 	const $about = document.getElementById('content-about');
 	const $ardis = document.getElementById('content-ardis');
 
+	const aboutHeading = `<div class="view-icons view-icons--top view-icons--about">
+			<img src="assets/images/about.png" />
+			</span><h2>About</h2>
+			<img src="assets/images/about.png" />
+		</div>`;
+
+	const credits = '<p class="credits">website by <a class="credits" rel="noopener noreferrer" target="_blank" href="https://beatpoet2015.blogspot.com">Elsa Brown</a></p>';
+
+	const ardisHeading = `<div class="view-icons view-icons--top view-icons--ardis">
+			<img src="assets/images/whatisardis.png" />
+			</span><h2>What Is Ardis?</h2>
+			<img src="assets/images/whatisardis.png" />
+		</div>`;
+
 	fetch(endpoint)
 		.then(res => res.json())
 		.then(data => {
@@ -29,10 +43,10 @@ const cms = () => {
 							$dates.innerHTML = datesTemplate(page.section);
 							break;
 							case 'about':
-							$about.innerHTML = page.section[0].content;
+							$about.innerHTML = aboutHeading + page.section[0].content + credits;
 							break;
 							case 'ardis':
-							$ardis.innerHTML = page.section[0].content;
+							$ardis.innerHTML = ardisHeading + page.section[0].content;
 							break;
 						}
 					})

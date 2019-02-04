@@ -28,6 +28,7 @@ const $menuSm = document.getElementById('menu-sm');
 const $menuClose = document.getElementById('menu-close');
 const $menuCloseSm = document.getElementById('menu-close-sm');
 const $view = document.getElementById('view');
+const $viewOuter = document.querySelector('.view-outer');
 const $viewClose = document.getElementById('view-close');
 const $title = document.getElementById('title');
 const $home = document.getElementById('home');
@@ -94,6 +95,7 @@ export {
 	$menuClose,
 	$menuCloseSm,
 	$view,
+	$viewOuter,
 	$viewClose,
 	$title,
 	$home,

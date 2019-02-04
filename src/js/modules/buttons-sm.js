@@ -32,10 +32,6 @@ const buttonsSm = () => {
     if (menuIsVisible) {
       hideMenu();
     }
-    // else {
-    //   $compass.classList.add('show');
-    //   $compass.classList.remove('hide', 'hidden');
-    // }
   };
 
   let prevView;
@@ -45,9 +41,6 @@ const buttonsSm = () => {
     $view.classList.add('hide');
     $view.classList.remove('show');
     setTimeout(() => $view.classList.add('hidden'), 1100);
-
-    // $compass.classList.add('show');
-    // $compass.classList.remove('hide', 'hidden');
 
     viewIsVisible = false;
   };
@@ -61,6 +54,7 @@ const buttonsSm = () => {
   });
 
   $compass.addEventListener('click', () => {
+  	console.log('hi')
   	!menuIsVisible && showMenu();
 	});
 
@@ -83,7 +77,7 @@ const buttonsSm = () => {
 
       viewIsVisible ? hideView() : showView(key);
 
-  	}, 400));
+  	}, 100));
   });
 }
 

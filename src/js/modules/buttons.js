@@ -1,6 +1,14 @@
 import smoothscroll from 'smoothscroll-polyfill';
-import { volcano, currentData, $compass, $menu, $menuClose, $buttons, $targets, $view, $viewClose, $title, $home } from '../constants';
+import { volcano, currentData, $compass, $menu, $menuClose, $buttons, $targets, $view, $viewOuter, $viewClose, $title, $home } from '../constants';
 import { debounce } from '../utils';
+
+const colors = {
+  'watch': 'rgba(240, 230, 140, 0.3)',
+  'press': '#e0ffe7',
+  'person': '#ffe8cc',
+  'about': '#ffe8f9',
+  'ardis': '#d8fffc',
+}
 
 const buttons = () => {
   let menuIsVisible = false;
@@ -34,7 +42,7 @@ const buttons = () => {
   };
 
   const showView = (key) => {
-    if (key === 'watch') view.classList.add('transparent');
+    $viewOuter.setAttribute(`style`, `background: ${colors[key]}`);
 
     $view.classList.add('show');
     $view.classList.remove('hide', 'hidden');
@@ -50,8 +58,6 @@ const buttons = () => {
 
   let prevView;
   const hideView = () => {
-    view.classList.remove('transparent');
-
     $view.classList.add('hide');
     $view.classList.remove('show');
     setTimeout(() => $view.classList.add('hidden'), 1100);
@@ -74,6 +80,7 @@ const buttons = () => {
     $buttons[key].addEventListener('click', () => {
       $targets[key].scrollIntoView({behavior: "smooth"});
     });
+    console.log(key)
 
     if (key === 'listen') return;
 
