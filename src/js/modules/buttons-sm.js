@@ -1,10 +1,17 @@
-import { $compassSm as $compass, $menuSm as $menu, $menuCloseSm as $menuClose, $buttonsSm as $buttons, $view } from '../constants';
+import { $compassSm as $compass, $menuSm as $menu, $menuCloseSm as $menuClose, $buttonsSm as $buttons, $view, $viewOuter, $viewClose } from '../constants';
 import { debounce } from '../utils';
 
 const buttonsSm = () => {
 	let menuIsVisible = false;
 	let viewIsVisible = false;
 	let currentView;
+
+  const colors = {
+    'press': '#e0ffe7',
+    'person': '#ffe8cc',
+    'about': '#ffe8f9',
+    'ardis': '#d8fffc',
+  }
 
 	const showMenu = () => {
     setTimeout(() => {
@@ -24,7 +31,7 @@ const buttonsSm = () => {
   };
 
   const showView = (key) => {
-    if (key === 'watch') view.classList.add('transparent');
+    $viewOuter.setAttribute(`style`, `background: ${colors[key]}`);
 
     $view.classList.add('show');
     $view.classList.remove('hide', 'hidden');
@@ -62,7 +69,7 @@ const buttonsSm = () => {
   });
 
   Object.keys($buttons).forEach(key => {
-  	$buttons[key].addEventListener('click', debounce((e) => {
+  	$buttons[key].addEventListener('click', debounce(() => {
   		const id = key === 'person' ? `content-dates` : `content-${key}`;
   		const contentElement = document.getElementById(id);
 
@@ -78,6 +85,8 @@ const buttonsSm = () => {
 
   	}, 100));
   });
+
+  $viewClose.addEventListener('click', () => hideView());
 }
 
 export default buttonsSm;
