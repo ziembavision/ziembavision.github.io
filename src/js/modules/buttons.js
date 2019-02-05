@@ -54,6 +54,11 @@ const buttons = () => {
       $compass.classList.add('show');
       $compass.classList.remove('hide', 'hidden');
     }
+
+      document.body.addEventListener('click', (evt) => {
+        const isView = Array.from(evt.target.classList).includes('view-content');
+        if (viewIsVisible && !isView) hideView();
+      });
   };
 
   let prevView;
