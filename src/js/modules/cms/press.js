@@ -6,7 +6,11 @@ const press = (data) => {
 		</div>
 		<ul class="press-list">`
 	data.forEach(article => {
-		const elem = `<li class="press-list-item"><a href="${article.link}">${article.title}</a> -&nbsp;${article.logoAlt}</li>`
+		const elem = article.logo ?
+			`<li class="press-list-item press-list-item--logo">
+				<a href="${article.link}"><span>${article.title}</span><img src="${article.logo}" /></a>
+			</li>` :
+			`<li class="press-list-item"><a href="${article.link}">${article.title}</a></li>`
 		pressList += elem;
 	});
 	return pressList + `</ul>`;

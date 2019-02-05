@@ -54,7 +54,6 @@ const buttonsSm = () => {
   });
 
   $compass.addEventListener('click', () => {
-  	console.log('hi')
   	!menuIsVisible && showMenu();
 	});
 

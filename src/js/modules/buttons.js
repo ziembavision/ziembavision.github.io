@@ -80,7 +80,6 @@ const buttons = () => {
     $buttons[key].addEventListener('click', () => {
       $targets[key].scrollIntoView({behavior: "smooth"});
     });
-    console.log(key)
 
     if (key === 'listen') return;
 

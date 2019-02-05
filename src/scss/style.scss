@@ -42,7 +42,7 @@ html {
 }
 
 a {
-	color: black;
+	color: #60000e;
 	cursor: pointer;
 	text-decoration: none;
 }
@@ -240,27 +240,18 @@ h2 {
 
 /* map icons */
 #listen {
-	/*left: 2400px;
-  top: 1800px;*/
-
   img {
   	max-width: 74px;
   }
 }
 
 #watch {
-/*	top: 1000px;
-  left: 1500px;*/
-
   img {
   	max-width: 85px;
   }
 }
 
 #press {
-/*	top: 2000px;
-  left: 400px;*/
-
   img {
   	max-width: 65px;
     transform: rotate(7deg);
@@ -268,9 +259,6 @@ h2 {
 }
 
 #person {
-/*	left: 3000px;
-  top: 760px;*/
-
   img {
   	width: 55px;
     transform: rotate(7deg);
@@ -278,9 +266,6 @@ h2 {
 }
 
 #about {
-/*  left: 3000px;
-  top: 2400px;*/
-
   img {
   	width: 80px;
   }
@@ -434,7 +419,7 @@ h2 {
 
 	&-outer {
 		background: lavender;
-		height: 98.5%;
+		height: 100%;
 	  position: absolute;
 	  max-width: 700px;
 	  z-index: 2;
@@ -526,32 +511,8 @@ h2 {
 			}
     }
 
-    &--press {
-    	a {
-    		color: black;
-    		font-family: 'mr-eaves-sans', sans-serif;
-    		font-style: italic;
-				letter-spacing: 0.03em;
-				text-decoration: underline;
-
-    		&:hover {
-					text-decoration: none;
-				}
-    	}
-    }
-
     &--dates {
-    	a {
-    		color: black;
-    		font-family: 'mr-eaves-sans', sans-serif;
-    		font-style: italic;
-				letter-spacing: 0.03em;
-				text-decoration: none;
-
-    		&:hover {
-					text-decoration: underline;
-				}
-    	}
+    	font-weight: 400;
     }
 
     &--ardis {
@@ -568,6 +529,36 @@ h2 {
 	&-list {
 		&-item {
 			margin-bottom: 10px;
+
+			&--logo {
+				margin-bottom: 30px;
+
+				a {
+					align-items: start;
+					display: flex;
+    			justify-content: space-between;
+
+    			img {
+						padding-left: 20px;
+						max-height: 80px;
+						max-width: 100px;
+					}
+				}
+			}
+
+			a {
+				background: -webkit-linear-gradient(left, #DB7093, slateblue, #DB7093, coral, slateblue, coral, #DB7093, slateblue, #DB7093);
+			  -webkit-background-clip: text;
+			  -webkit-text-fill-color: transparent;
+			  font-family: 'mr-eaves-sans', sans-serif;
+			  font-weight: 500;
+
+			  &:hover {
+					font-style: italic;
+					letter-spacing: 0.04em;
+					text-decoration: none;
+				}
+			}
 		}
 	}
 }
@@ -679,6 +670,7 @@ h2 {
 
 	.view {
 		&-outer {
+			height: 98.5%;
 			position: fixed;
 		}
 
@@ -769,7 +761,7 @@ h2 {
 	  top: 2400px;
 
 	  img {
-	  	max-width: 80px;
+	  	width: 72px;
 	  }
 	}
 
