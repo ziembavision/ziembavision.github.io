@@ -315,7 +315,7 @@ h2 {
 
 #compass-sm {
 	cursor: pointer;
-	width: 100px;
+	width: 160px;
 }
 
 #item-1 {
@@ -623,12 +623,12 @@ h2 {
 	}
 
 	#compass {
-		bottom: 40px;
+		bottom: 20px;
 		cursor: pointer;
 		display: block;
 		left: 20px;
 		position: fixed;
-	  width: 70px;
+	  width: 125px;
 	  z-index: 3;
 	}
 
@@ -637,6 +637,7 @@ h2 {
 	}
 
 	.nav {
+		bottom: 20px;
 		left: 20px;
 	}
 
