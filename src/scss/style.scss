@@ -525,6 +525,14 @@ h2 {
 			  font-family: 'mr-eaves-sans', sans-serif;
 			  font-weight: 500;
 
+			  span {
+			  	background: -webkit-linear-gradient(left, #DB7093, slateblue, #DB7093, coral, slateblue, coral, #DB7093, slateblue, #DB7093);
+			    -webkit-background-clip: text;
+			    -webkit-text-fill-color: transparent;
+			    font-family: 'mr-eaves-sans', sans-serif;
+			    font-weight: 500;
+			  }
+
 			  &:hover {
 					font-style: italic;
 					letter-spacing: 0.04em;
