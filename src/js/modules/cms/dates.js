@@ -52,8 +52,8 @@ const datesHTML = `
 	<tr class="dates-list-item"><td class="dates-date">3/11</td><td>TREVORSHAUS; BROOKLYN, NY</td></tr>
 	<tr class="dates-list-item"><td class="dates-date">3/9</td><td>SUPERCHIEF GALLERY; QUEENS, NY</td></tr>
 	<tr class="dates-list-item"><td class="dates-date">2/15</td><td>AFFECTIVELY HOW OPERA SCORE, EMBARRASSED OF THE WHOLE, PANOPLY PERFORMANCE LABORATORY; BROOKLYN, NY</td></tr>
-	<tr class="dates-list-item"><td class="dates-date">2/9-2/11</td><td>RAUL DE NIEVES & COLIN SELF: THE FOOL; THE KITCHEN; NEW YORK, NY</td></tr>
-	<tr class="dates-list-item"><td class="dates-date">1/21<</td><td>SOUND DEPARTURES @ LA MAMA; NEW YORK, NY</td></tr>
+	<tr class="dates-list-item"><td class="dates-date">2/9-&nbsp;2/11</td><td>RAUL DE NIEVES & COLIN SELF: THE FOOL; THE KITCHEN; NEW YORK, NY</td></tr>
+	<tr class="dates-list-item"><td class="dates-date">1/21</td><td>SOUND DEPARTURES @ LA MAMA; NEW YORK, NY</td></tr>
 </table>
 
 <p class="dates-year">2016</p>
