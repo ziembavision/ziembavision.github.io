@@ -94,6 +94,38 @@ const $audioButtons = [
 		button: document.getElementById('doyouremember'),
 		src:  '../../assets/audio/doyouremember.mp3' 
 	},
+	{ 
+		button: document.getElementById('veritas-in-terra--2'),
+		src: '../../assets/audio/veritas-in-terra.mp3' 
+	},
+	{ 
+		button: document.getElementById('i-built-utopia--2'),
+		src: '../../assets/audio/i-built-utopia.mp3' 
+	},
+	{ 
+		button: document.getElementById('ugly-ambitious-women--2'),
+		src: '../../assets/audio/ugly-ambitious-women.mp3' 
+	},
+	{ 
+		button: document.getElementById('vero--2'),
+		src:  '../../assets/audio/vero.mp3' 
+	},
+	{ 
+		button: document.getElementById('lips2lips--2'),
+		src:  '../../assets/audio/lips2lips.mp3' 
+	},
+	{ 
+		button: document.getElementById('lovemagnet--2'),
+		src:  '../../assets/audio/lovemagnet.mp3' 
+	},
+	{ 
+		button: document.getElementById('nightbuzzing--2'),
+		src:  '../../assets/audio/nightbuzzing.mp3' 
+	},
+	{ 
+		button: document.getElementById('doyouremember--2'),
+		src:  '../../assets/audio/doyouremember.mp3' 
+	},
 ];
 
 export {
