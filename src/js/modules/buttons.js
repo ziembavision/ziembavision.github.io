@@ -83,7 +83,7 @@ const buttons = () => {
 
   Object.keys($buttons).forEach(key => {
     $buttons[key].addEventListener('click', () => {
-      $targets[key].scrollIntoView({behavior: "smooth"});
+      $targets[key].scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
     });
 
     if (key === 'listen') return;
