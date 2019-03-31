@@ -77,7 +77,23 @@ const $audioButtons = [
 	{ 
 		button: document.getElementById('vero'),
 		src:  '../../assets/audio/vero.mp3' 
-	}
+	},
+	{ 
+		button: document.getElementById('lips2lips'),
+		src:  '../../assets/audio/lips2lips.mp3' 
+	},
+	{ 
+		button: document.getElementById('lovemagnet'),
+		src:  '../../assets/audio/lovemagnet.mp3' 
+	},
+	{ 
+		button: document.getElementById('nightbuzzing'),
+		src:  '../../assets/audio/nightbuzzing.mp3' 
+	},
+	{ 
+		button: document.getElementById('doyouremember'),
+		src:  '../../assets/audio/doyouremember.mp3' 
+	},
 ];
 
 export {
