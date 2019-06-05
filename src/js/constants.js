@@ -95,6 +95,22 @@ const $audioButtons = [
 		src:  '../../assets/audio/doyouremember.mp3' 
 	},
 	{ 
+		button: document.getElementById('adhk'),
+		src:  '../../assets/audio/all-doors-have-keys.mp3' 
+	},
+	{ 
+		button: document.getElementById('spinning'),
+		src:  '../../assets/audio/spinning-wheel-spin.mp3' 
+	},
+	{ 
+		button: document.getElementById('mutatis'),
+		src:  '../../assets/audio/mutatis-mutandis.mp3' 
+	},
+		{ 
+		button: document.getElementById('ideata'),
+		src:  '../../assets/audio/end-at-the-ardis.mp3' 
+	},
+	{ 
 		button: document.getElementById('veritas-in-terra--2'),
 		src: '../../assets/audio/veritas-in-terra.mp3' 
 	},
@@ -125,6 +141,22 @@ const $audioButtons = [
 	{ 
 		button: document.getElementById('doyouremember--2'),
 		src:  '../../assets/audio/doyouremember.mp3' 
+	},
+	{ 
+		button: document.getElementById('adhk--2'),
+		src:  '../../assets/audio/all-doors-have-keys.mp3' 
+	},
+	{ 
+		button: document.getElementById('spinning--2'),
+		src:  '../../assets/audio/spinning-wheel-spin.mp3' 
+	},
+	{ 
+		button: document.getElementById('mutatis--2'),
+		src:  '../../assets/audio/mutatis-mutandis.mp3' 
+	},
+		{ 
+		button: document.getElementById('ideata--2'),
+		src:  '../../assets/audio/end-at-the-ardis.mp3' 
 	},
 ];
 
