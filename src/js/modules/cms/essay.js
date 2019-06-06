@@ -1,4 +1,4 @@
-<h1>Ziemba, “ARDIS”</h1>
+const essay = `<h1>Ziemba, “ARDIS”</h1>
 <p>an essay by Anna Kladzyk</p>
 
 <h2>ARDISIAN MOODS</h2>
@@ -35,4 +35,6 @@
 
 <p>So, <span class="essay--mono essay--italics">where is the world you sing to, and when?</span></p>
 
-<p class="essay--closing">- Anna Kladzyk, 5/14/2019</p>
+<p class="essay--closing">- Anna Kladzyk, 5/14/2019</p>`;
+
+export default essay;

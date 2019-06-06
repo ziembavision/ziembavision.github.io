@@ -1,6 +1,7 @@
 import watchTemplate from './watch';
 import pressTemplate from './press';
 import datesTemplate from './dates';
+import ardisEssay from './essay';
 
 const cms = () => {
 	const endpoint = 'https://ardis-360a5.firebaseio.com/data.json?auth=aDROvVNty1cqpgu9Yijkr2Gfk6IR7BywJIHMM32n';
@@ -46,7 +47,7 @@ const cms = () => {
 							$about.innerHTML = aboutHeading + page.section[0].content + credits;
 							break;
 							case 'ardis':
-							$ardis.innerHTML = ardisHeading + page.section[0].content;
+							$ardis.innerHTML = ardisHeading + page.section[0].content + ardisEssay;
 							break;
 						}
 					})
