@@ -497,6 +497,41 @@ h2 {
 	}
 }
 
+.ardis-essay {
+	h2 {
+		margin-bottom: 10px;
+	}
+
+	h4 {
+		font-style: italic;
+		font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+	}
+
+	.byline {
+		font-weight: 400;
+		text-align: center;
+	}
+
+	.essay--italics {
+		font-style: italic;
+    letter-spacing: 0.01em;
+	}
+
+	.essay--mono {
+		font-family: monospace;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 20px;
+	}
+
+	.indent {
+		line-height: 1.8em;
+		padding: 0 40px;
+	}
+}
+
 .press {
 	&-list {
 		&-item {
