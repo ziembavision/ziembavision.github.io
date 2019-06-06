@@ -4,7 +4,6 @@ import datesTemplate from './dates';
 import ardisEssay from './essay';
 
 const cms = () => {
-	console.log(ardisEssay)
 	const endpoint = 'https://ardis-360a5.firebaseio.com/data.json?auth=aDROvVNty1cqpgu9Yijkr2Gfk6IR7BywJIHMM32n';
 
 	const $listen = document.getElementById('content-listen');
