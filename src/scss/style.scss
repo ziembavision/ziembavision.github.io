@@ -654,6 +654,7 @@ h2 {
 		&-outer {
 			height: 98.5%;
 			position: fixed;
+			z-index: 30;
 		}
 
 		&-inner {
