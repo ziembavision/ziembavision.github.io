@@ -32,7 +32,7 @@ const essay = `<div class="ardis-essay">
 
 <p class="essay--mono indent">I would say that Ardis is neither specific in space nor specific in time. It is an approach to scale and perspective that is playful. Can you assess a bedroom by the same metrics that you would a city, or by the same metrics that you would a constellation in the night sky? That seems like an absurd activity, but there is utility in approaching different scales from a similar lens. This sort of approach to learning and engaging with the world is a macro/microcosmic type of awareness that decenters humans and is constantly situating and re-situating.</p>
 
-<p>As I welcome the concurrent failing and rebuilding throughout Ardis, my impact expands. I can more readily cross-pollinate and connect the spheres with my Ardisian companions. And remember, All Doors Have Keys, you can create and participate in Ardis from any node.</p>
+<p>As I welcome the concurrent failing and rebuilding throughout Ardis, my impact expands. I can more readily cross-pollinate and connect the spheres with my Ardisian companions. And remember, <span class="essay--italics">All Doors Have Keys</span>, you can create and participate in Ardis from any node.</p>
 
 <p>So, <span class="essay--mono">where is the world you sing to, and when?</span></p>
 
