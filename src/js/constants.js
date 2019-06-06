@@ -96,7 +96,7 @@ const $audioButtons = [
 	},
 	{ 
 		button: document.getElementById('adhk'),
-		src:  '../../assets/audio/all-doors-have-keys.mp3' 
+		src:  '../../assets/audio/all-doors-have-keys.wav' 
 	},
 	{ 
 		button: document.getElementById('spinning'),
