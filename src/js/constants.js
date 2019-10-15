@@ -41,6 +41,7 @@ const $buttons = {
 	watch: document.getElementById('anchor-watch'),
 	press: document.getElementById('anchor-press'),
 	person: document.getElementById('anchor-person'),
+	writing: document.getElementById('anchor-writing'),
 	about: document.getElementById('anchor-about'),
 	ardis: document.getElementById('anchor-ardis')
 };
@@ -48,6 +49,7 @@ const $buttons = {
 const $buttonsSm = {
 	press: document.getElementById('anchor-press-sm'),
 	person: document.getElementById('anchor-person-sm'),
+	writing: document.getElementById('anchor-writing-sm'),
 	about: document.getElementById('anchor-about-sm'),
 	ardis: document.getElementById('anchor-ardis-sm')
 };
@@ -57,6 +59,7 @@ const $targets = {
 	watch: document.getElementById('watch'),
 	press: document.getElementById('press'),
 	person: document.getElementById('person'),
+	writing: document.getElementById('writing'),
 	about: document.getElementById('about'),
 	ardis: document.getElementById('ardis')
 };
@@ -137,10 +140,6 @@ const $audioButtons = [
 	{ 
 		button: document.getElementById('nightbuzzing--2'),
 		src:  '../../assets/audio/nightbuzzing.mp3' 
-	},
-	{ 
-		button: document.getElementById('doyouremember--2'),
-		src:  '../../assets/audio/doyouremember.mp3' 
 	},
 	{ 
 		button: document.getElementById('adhk--2'),

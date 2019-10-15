@@ -203,6 +203,12 @@ h2 {
 		}
 	}
 
+	&-writing {
+		img {
+			max-width: 55px;
+		}
+	}
+
 	&-person {
 		img {
 			max-width: 37px;
@@ -413,6 +419,14 @@ h2 {
     justify-content: space-between;
     margin-bottom: 30px;
 
+    &--writing {
+    	height: 99px;
+
+    	img {
+    		width: 100px;
+    	}
+    }
+
     &--press {
     	height: 99px;
 
@@ -615,6 +629,18 @@ h2 {
 	}
 }
 
+.writing {
+	&-list {
+		&-item {
+			margin-bottom: 10px;
+
+			span {
+				font-style: italic;
+			}
+		}
+	}
+}
+
 
 .watch {
 	&-list {
@@ -777,6 +803,15 @@ h2 {
 	  }
 	}
 
+	#writing {
+		left: 1800px;
+  	top: 2000px;
+
+		img {
+			width: 100px;
+		}
+	}
+
 	#about {
 	  left: 3000px;
 	  top: 2400px;
@@ -883,15 +918,6 @@ h2 {
 
 	#doyouremember {
 		left: 1000px;
-
-		img {
-			width: 100px;
-		}
-	}
-
-	#doyouremember--2 {
-		left: 1800px;
-  	top: 2000px;
 
 		img {
 			width: 100px;

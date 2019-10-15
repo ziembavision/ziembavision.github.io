@@ -1,6 +1,7 @@
 import watchTemplate from './watch';
 import pressTemplate from './press';
 import datesTemplate from './dates';
+import writingTemplate from './writing';
 import ardisEssay from './essay';
 
 const cms = () => {
@@ -10,6 +11,7 @@ const cms = () => {
 	const $watch = document.getElementById('content-watch');
 	const $press = document.getElementById('content-press');
 	const $dates = document.getElementById('content-dates');
+	const $writing = document.getElementById('content-writing');
 	const $about = document.getElementById('content-about');
 	const $ardis = document.getElementById('content-ardis');
 
@@ -42,6 +44,9 @@ const cms = () => {
 							break;
 							case 'dates':
 							$dates.innerHTML = datesTemplate(page.section);
+							break;
+							case 'writing':
+							$writing.innerHTML = writingTemplate(page.section);
 							break;
 							case 'about':
 							$about.innerHTML = aboutHeading + page.section[0].content + credits;

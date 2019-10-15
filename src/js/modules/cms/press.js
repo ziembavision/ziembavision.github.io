@@ -8,9 +8,9 @@ const press = (data) => {
 	data.forEach(article => {
 		const elem = article.logo ?
 			`<li class="press-list-item press-list-item--logo">
-				<a href="${article.link}"><span>${article.title}</span><img src="${article.logo}" /></a>
+				<a target="_blank" rel="noopener noreferrer" href="${article.link}"><span>${article.title}</span><img src="${article.logo}" /></a>
 			</li>` :
-			`<li class="press-list-item"><a href="${article.link}">${article.title}</a></li>`
+			`<li class="press-list-item"><a target="_blank" rel="noopener noreferrer" href="${article.link}">${article.title}</a></li>`
 		pressList += elem;
 	});
 	return pressList + `</ul>`;
